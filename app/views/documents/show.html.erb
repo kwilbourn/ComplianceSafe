@@ -1,0 +1,39 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @document.name %>
+</p>
+
+<p>
+  <strong>Permit number:</strong>
+  <%= @document.permit_number %>
+</p>
+
+<p>
+  <strong>Expiration date:</strong>
+  <%= @document.expiration_date %>
+</p>
+
+<p>
+  <strong>Created:</strong>
+  <%= @document.created %>
+</p>
+
+<p>
+  <strong>Modified:</strong>
+  <%= @document.modified %>
+</p>
+
+<p>
+  <strong>Type id:</strong>
+  <%= @document.type_ID %>
+</p>
+
+<p>
+  <strong>User id:</strong>
+  <%= @document.user_ID %>
+</p>
+
+<%= link_to 'Edit', edit_document_path(@document) %> |
+<%= link_to 'Back', documents_path %>
