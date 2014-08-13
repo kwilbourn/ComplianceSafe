@@ -11,7 +11,19 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140812225617) do
+ActiveRecord::Schema.define(version: 20140813002613) do
+
+  create_table "documents", force: true do |t|
+    t.string   "name"
+    t.string   "permit_number"
+    t.date     "expiration_date"
+    t.datetime "created"
+    t.datetime "modified"
+    t.integer  "type_ID"
+    t.integer  "user_ID"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "users", force: true do |t|
     t.string   "email",                  default: "", null: false
