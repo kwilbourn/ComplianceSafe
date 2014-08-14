@@ -1,0 +1,19 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  name: MyString
+  permit_number: MyString
+  expiration_date: 2014-08-12
+  created: 2014-08-12 19:26:13
+  modified: 2014-08-12 19:26:13
+  type_ID: 
+  user_ID: 
+
+two:
+  name: MyString
+  permit_number: MyString
+  expiration_date: 2014-08-12
+  created: 2014-08-12 19:26:13
+  modified: 2014-08-12 19:26:13
+  type_ID: 
+  user_ID: 
