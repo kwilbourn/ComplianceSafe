@@ -1,4 +1,8 @@
 Rails.application.routes.draw do
+  resources :document_types
+
+  get 'document_type/show'
+
   resources :documents
 
   devise_for :users
