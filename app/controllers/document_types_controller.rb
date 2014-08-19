@@ -25,7 +25,6 @@ class DocumentTypesController < ApplicationController
   # POST /document_types.json
   def create
     @document_type = DocumentType.new(document_type_params)
-
     respond_to do |format|
       if @document_type.save
         format.html { redirect_to @document_type, notice: 'Document type was successfully created.' }
@@ -69,6 +68,6 @@ class DocumentTypesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def document_type_params
-      params[:document_type]
+      params.permit(:description, :typeID, :created_at, :updated_at)
     end
 end

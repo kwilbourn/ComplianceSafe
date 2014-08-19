@@ -2,7 +2,7 @@ Rails.application.routes.draw do
   resources :document_types
 
   get 'document_type/show'
-
+root :to => "documents#index"
   resources :documents
 
   devise_for :users
