@@ -23,22 +23,7 @@
     <%= f.label :expiration_date %><br>
     <%= f.date_select :expiration_date %>
   </div>
-  <div class="field">
-    <%= f.label :created %><br>
-    <%= f.datetime_select :created %>
-  </div>
-  <div class="field">
-    <%= f.label :modified %><br>
-    <%= f.datetime_select :modified %>
-  </div>
-  <div class="field">
-    <%= f.label :type_ID %><br>
-    <%= f.text_field :type_ID %>
-  </div>
-  <div class="field">
-    <%= f.label :user_ID %><br>
-    <%= f.text_field :user_ID %>
-  </div>
+  <div class="field"><%= f.file_field :document_upload %></div>
   <div class="actions">
     <%= f.submit %>
   </div>

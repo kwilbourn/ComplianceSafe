@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140819154441) do
+ActiveRecord::Schema.define(version: 20140819191817) do
 
   create_table "document_types", force: true do |t|
     t.integer  "typeID"
@@ -24,10 +24,6 @@ ActiveRecord::Schema.define(version: 20140819154441) do
     t.string   "name"
     t.string   "permit_number"
     t.date     "expiration_date"
-    t.datetime "created"
-    t.datetime "modified"
-    t.integer  "type_ID"
-    t.integer  "user_ID"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

@@ -17,23 +17,18 @@
 
 <p>
   <strong>Created:</strong>
-  <%= @document.created %>
+  <%= @document.created_at %>
 </p>
 
 <p>
-  <strong>Modified:</strong>
-  <%= @document.modified %>
+  <strong>Last Updated:</strong>
+  <%= @document.updated_at %>
+</p>
+<p>
+  <strong>File Attachment:</strong>
+  <%= @document.document_upload %>
 </p>
 
-<p>
-  <strong>Type id:</strong>
-  <%= @document.type_ID %>
-</p>
-
-<p>
-  <strong>User id:</strong>
-  <%= @document.user_ID %>
-</p>
 
 <%= link_to 'Edit', edit_document_path(@document) %> |
 <%= link_to 'Back', documents_path %>
