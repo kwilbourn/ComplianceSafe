@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  resources :areas
+
   resources :document_types
 
   get 'document_type/show'

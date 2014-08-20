@@ -11,7 +11,14 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140819191817) do
+ActiveRecord::Schema.define(version: 20140820154522) do
+
+  create_table "areas", force: true do |t|
+    t.string   "description"
+    t.string   "identifier"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "document_types", force: true do |t|
     t.integer  "typeID"
@@ -24,6 +31,13 @@ ActiveRecord::Schema.define(version: 20140819191817) do
     t.string   "name"
     t.string   "permit_number"
     t.date     "expiration_date"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "user_areas", force: true do |t|
+    t.integer  "user_id"
+    t.integer  "area_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
