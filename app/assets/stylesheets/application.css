@@ -13,3 +13,8 @@
  *= require_tree .
  *= require_self
  */
+.user_email, .user_first_name, .user_last_name, .user_address, .user_address2, .user_city, .user_state, .user_zip, .user_phone_number {
+float: left;
+padding-right: 20px;
+}
+.user_password, .user_city, .user_first_name, .user_address, .user_address2, .user_email {clear:both;}
