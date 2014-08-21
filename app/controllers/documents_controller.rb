@@ -7,6 +7,7 @@ end
   # GET /documents.json
   def index
     @documents = Document.all
+    @user = current_user
   end
 
   # GET /documents/1

@@ -5,7 +5,7 @@ class DocumentTypesController < ApplicationController
   # GET /document_types.json
   def index
     @document_types = DocumentType.all
-    @user = current_user
+
   end
 
   # GET /document_types/1
