@@ -72,6 +72,6 @@ end
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def document_params
-      params.require(:document).permit(:name, :permit_number, :expiration_date)
+      params.require(:document).permit(:name, :permit_number, :expiration_date, :document_upload)
     end
 end

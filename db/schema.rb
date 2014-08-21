@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140821153705) do
+ActiveRecord::Schema.define(version: 20140821194216) do
 
   create_table "areas", force: true do |t|
     t.string   "description"
@@ -36,6 +36,10 @@ ActiveRecord::Schema.define(version: 20140821153705) do
     t.datetime "updated_at"
     t.integer  "user_id"
     t.integer  "document_type_id"
+    t.string   "document_upload_file_name"
+    t.string   "document_upload_content_type"
+    t.integer  "document_upload_file_size"
+    t.datetime "document_upload_updated_at"
   end
 
   create_table "user_areas", force: true do |t|
@@ -69,6 +73,8 @@ ActiveRecord::Schema.define(version: 20140821153705) do
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true
+  add_index "users", ["first_name"], name: "index_users_on_first_name"
+  add_index "users", ["last_name"], name: "index_users_on_last_name"
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
 
 end

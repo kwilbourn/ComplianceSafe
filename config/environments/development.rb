@@ -37,4 +37,5 @@ Rails.application.configure do
   config.action_mailer.default_url_options = { :host => 'localhost:3000' }
   #Paperclip configuration
   Paperclip.options[:command_path] = "c/Windows/system32/convert"
+  Paperclip.options[:content_type_mappings] = { pdf: 'application/pdf' }
 end
