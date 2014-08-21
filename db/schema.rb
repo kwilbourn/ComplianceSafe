@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140820193422) do
+ActiveRecord::Schema.define(version: 20140821151129) do
 
   create_table "areas", force: true do |t|
     t.string   "description"
@@ -34,6 +34,7 @@ ActiveRecord::Schema.define(version: 20140820193422) do
     t.date     "expiration_date"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "user_id"
   end
 
   create_table "user_areas", force: true do |t|

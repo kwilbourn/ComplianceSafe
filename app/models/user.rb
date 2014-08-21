@@ -5,4 +5,5 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable
   has_many :user_areas
   has_many :areas, through: :user_areas
+  has_many :documents
 end
