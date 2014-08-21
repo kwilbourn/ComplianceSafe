@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140820170051) do
+ActiveRecord::Schema.define(version: 20140820193422) do
 
   create_table "areas", force: true do |t|
     t.string   "description"
@@ -21,7 +21,6 @@ ActiveRecord::Schema.define(version: 20140820170051) do
   end
 
   create_table "document_types", force: true do |t|
-    t.integer  "typeID"
     t.string   "description"
     t.datetime "created_at"
     t.datetime "updated_at"

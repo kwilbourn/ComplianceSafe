@@ -68,6 +68,6 @@ class DocumentTypesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def document_type_params
-      params.permit(:description, :typeID, :created_at, :updated_at)
+      params.permit(:description, :identifier, :created_at, :updated_at)
     end
 end
