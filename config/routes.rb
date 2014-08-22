@@ -1,4 +1,12 @@
 Rails.application.routes.draw do
+  get 'user_areas/index'
+
+  get 'user_areas/update'
+
+  get 'user_areas/create'
+
+  get 'user_areas/edit'
+
   resources :doc_types
 
   resources :areas

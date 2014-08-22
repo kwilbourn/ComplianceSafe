@@ -2,6 +2,10 @@ class Ability
   include CanCan::Ability
 
   def initialize(user)
+    #Users can read, update, and create their own documents.
+    can :read, Document, :user_id => user.id
+    can :create, Document, :user_id => user.id
+    can :update, Document, :user_id => user.id
     # Define abilities for the passed in user here. For example:
     #
     #   user ||= User.new # guest user (not logged in)

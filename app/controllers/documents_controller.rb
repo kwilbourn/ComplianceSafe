@@ -1,12 +1,13 @@
 class DocumentsController < ApplicationController
   before_action :set_document, only: [:show, :edit, :update, :destroy]
+  load_and_authorize_resource
 def file_attachment
   send_file 'document.file.path'
 end
   # GET /documents
   # GET /documents.json
   def index
-    @documents = current_user.Document.all
+    @documents = Document.accessible_by(current_ability)
     @user = current_user
   end
 
