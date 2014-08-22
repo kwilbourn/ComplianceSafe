@@ -5,7 +5,6 @@ class DocumentTypesController < ApplicationController
   # GET /document_types.json
   def index
     @document_types = DocumentType.all
-
   end
 
   # GET /document_types/1
@@ -69,6 +68,6 @@ class DocumentTypesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def document_type_params
-      params.permit(:description, :identifier, :created_at, :updated_at)
+      params.permit(:description, :issuing_authority, :area_id)
     end
 end

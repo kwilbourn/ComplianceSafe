@@ -1,0 +1,20 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Description:</strong>
+  <%= @doc_type.description %>
+</p>
+
+<p>
+  <strong>Issuing authority:</strong>
+  <%= @doc_type.issuing_authority %>
+</p>
+
+<p>
+  <strong>Area:</strong>
+  <%= @doc_type.area.identifier %>
+  <%= @doc_type.area.description %>
+</p>
+
+<%= link_to 'Edit', edit_doc_type_path(@doc_type) %> |
+<%= link_to 'Back', doc_types_path %>

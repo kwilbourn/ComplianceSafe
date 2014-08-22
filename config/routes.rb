@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  resources :doc_types
+
   resources :areas
 
   resources :document_types

@@ -10,7 +10,7 @@
       </ul>
     </div>
   <% end %>
-    <%= f.input :document_type_id, collection: DocumentType.all %>
+    <%= f.input :document_type_id, collection: DocType.all, label_method: :description  %>
     <%= f.input :permit_number %>
     <%= f.input :expiration_date %><br>
       <div class="field"><%= f.file_field :document_upload %></div>

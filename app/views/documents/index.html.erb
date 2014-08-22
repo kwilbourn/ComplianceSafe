@@ -15,6 +15,7 @@
     <% @documents.each do |document| %>
       <tr style=height:40px;>
         <td><%= document.user.email %></td>
+        <td><%= document.doc_type %></td>
         <td><%= document.permit_number %></td>
         <td><%= document.expiration_date %></td>
         <td><%= document.created_at.strftime("%Y-%m-%d") %></td>

@@ -1,5 +1,5 @@
 class Document < ActiveRecord::Base
-  belongs_to :document_type
+  belongs_to :doc_type
   belongs_to :user
   has_attached_file :document_upload
   validates :document_upload, :attachment_presence => true
