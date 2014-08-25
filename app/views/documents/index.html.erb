@@ -1,8 +1,9 @@
 <h1>Listing documents</h1>
 <div class="table-responsive">
-<table class="table-striped">
+<table class="table-striped table-hover">
   <thead>
     <tr>
+    	<th>File</th>
       <th>Name</th>
       <th>Document Type</th>
       <th>Permit number</th>
@@ -15,14 +16,15 @@
   <tbody>
     <% @documents.each do |document| %>
       <tr style=height:40px;>
+      	<td><%= link_to "PDF", document.document_upload.url %></td>
         <td><%= document.user.email %></td>
         <td><%= document.doc_type.description %></td>
         <td><%= document.permit_number %></td>
         <td><%= document.expiration_date %></td>
         <td><%= document.created_at.strftime("%Y-%m-%d") %></td>
-        <td class="button"><%= link_to 'Show', document %></td>
-        <td class="button"><%= link_to 'Edit', edit_document_path(document) %></td>
-        <td class="button"><%= link_to 'Delete', document, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to 'View Details', document, :class=>"btn btn-default btn-lg active" %></td>
+        <td><%= link_to 'Modify', edit_document_path(document), :class=>"btn btn-default btn-lg active" %></td>
+        <td><%= link_to 'Delete', document, method: :delete, data: { confirm: 'Are you sure?' }, :class=>"btn btn-default btn-lg active" %></td>
       </tr>
     <% end %>
   </tbody>
@@ -30,4 +32,4 @@
 </div>
 <br>
 
-<%= link_to 'New Document', new_document_path %>
+<%= link_to 'New Document', new_document_path, :class=>"btn btn-primary btn-lg active" %>

@@ -7,36 +7,48 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
-	<div class="navbar">
-		<div class="navbar-inner">
-			<div class="container">
-				<a href="#" class="brand"><img src="/assets/ComplianceSafe-Logo1.png"</a>
-				<ul class="nav">
-	  				<li><%= link_to "Fuel Documents", documents_path %></li>
-	  				<li><%= link_to "Document Types", doc_types_path %></li>
-	  				<li><%= link_to "Areas", areas_path %></li>
-				</ul>
-				<p class="navbar-text pull-right">
-				<% if user_signed_in? %>
-  					Logged in as <strong><%= current_user.email %> <%= current_user.last_name %></strong>.
-  					<%= link_to 'Edit profile', edit_user_registration_path, :class => 'navbar-link' %> |
-		  			<%= link_to "Logout", destroy_user_session_path, method: :delete, :class => 'navbar-link'  %>
-				<% else %>
-		  			<%= link_to "Sign up", new_user_registration_path, :class => 'navbar-link'  %> |
-		  			<%= link_to "Login", new_user_session_path, :class => 'navbar-link'  %>
+	<div id="page-wrapper">
+		<header id="masthead" class="site-header" role="banner">
+			<hgroup class="full-container">
+				<a href="#" class="brand"><img src="/assets/ComplianceSafe-Logo1.png"></a>
+				<div class="support-text"><p class="navbar-text pull-right">
+						<% if user_signed_in? %>
+		  					Logged in as <strong><%= current_user.email %> <%= current_user.last_name %></strong>.
+		  					<%= link_to 'Edit profile', edit_user_registration_path, :class => 'navbar-link' %> |
+				  			<%= link_to "Logout", destroy_user_session_path, method: :delete, :class => 'navbar-link'  %>
+						<% else %>
+				  			<%= link_to "Sign up", new_user_registration_path, :class => 'navbar-link'  %> |
+				  			<%= link_to "Login", new_user_session_path, :class => 'navbar-link'  %>
+						<% end %>
+						</p></div>
+			</hgroup>
+			<nav role="navigation" class="site-navigation main-navigation primary use-sticky-menu">
+				<div class="full-container">
+					<div class="menu">						
+						<ul>
+			  				<li><%= link_to "Fuel Documents", documents_path %></li>
+			  				<li><%= link_to "Document Types", doc_types_path %></li>
+			  				<li><%= link_to "Areas", areas_path %></li>
+						</ul>
+					</div>
+				</div>
+			</nav>
+			</header>
+		<div id="main" class="site-main">
+		<div id="primary" class="content-area">
+			<div id="content" class="site-content" role="main">
+				<% if notice %>
+				  <p class="alert alert-success"><%= notice %></p>
 				<% end %>
-				</p>
+				<% if alert %>
+				  <p class="alert alert-danger"><%= alert %></p>
+				<% end %>
+				<div class="container">
+				<%= yield %>
+				</div>
 			</div>
 		</div>
 	</div>
-<% if notice %>
-  <p class="alert alert-success"><%= notice %></p>
-<% end %>
-<% if alert %>
-  <p class="alert alert-danger"><%= alert %></p>
-<% end %>
-<div class="container">
-<%= yield %>
 </div>
 </body>
 </html>
