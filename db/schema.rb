@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140822164353) do
+ActiveRecord::Schema.define(version: 20140822213302) do
 
   create_table "areas", force: true do |t|
     t.string   "description"
@@ -48,6 +48,7 @@ ActiveRecord::Schema.define(version: 20140822164353) do
     t.string   "document_upload_content_type"
     t.integer  "document_upload_file_size"
     t.datetime "document_upload_updated_at"
+    t.integer  "doc_type_id"
   end
 
   create_table "user_areas", force: true do |t|
