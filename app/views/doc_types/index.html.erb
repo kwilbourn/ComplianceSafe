@@ -1,4 +1,4 @@
-<h1>Listing doc_types</h1>
+<h1>Available Document Types</h1>
 
 <table>
   <thead>
@@ -6,7 +6,7 @@
       <th>Description</th>
       <th>Issuing authority</th>
       <th>Area</th>
-      <th colspan="3"></th>
+      <% if current_user.admin? %><th colspan="3"></th><% end %>
     </tr>
   </thead>
 
@@ -16,9 +16,11 @@
         <td><%= doc_type.description %></td>
         <td><%= doc_type.issuing_authority %></td>
         <td><%= doc_type.area.identifier %></td>
-        <td><%= link_to 'Show', doc_type %></td>
-        <td><%= link_to 'Edit', edit_doc_type_path(doc_type) %></td>
-        <td><%= link_to 'Destroy', doc_type, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <% if current_user.admin? %>
+	        <td><%= link_to 'Show', doc_type, :class=>"btn btn-default btn-lg active" %></td>
+	        <td><%= link_to 'Edit', edit_doc_type_path(doc_type), :class=>"btn btn-default btn-lg active" %></td>
+	        <td><%= link_to 'Destroy', doc_type, method: :delete, data: { confirm: 'Are you sure?' }, :class=>"btn btn-default btn-lg active" %></td>
+	    <% end %>
       </tr>
     <% end %>
   </tbody>
@@ -26,4 +28,4 @@
 
 <br>
 
-<%= link_to 'New Doc type', new_doc_type_path %>
+<%= link_to 'New Doc type', new_doc_type_path, :class=>"btn btn-primary btn-lg active"  %>

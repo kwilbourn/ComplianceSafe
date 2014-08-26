@@ -1,9 +1,7 @@
-<p id="notice"><%= notice %></p>
-
-<p>
-  <strong>Description:</strong>
+<h1>
+  
   <%= @doc_type.description %>
-</p>
+</h1>
 
 <p>
   <strong>Issuing authority:</strong>
@@ -16,5 +14,5 @@
   <%= @doc_type.area.description %>
 </p>
 
-<%= link_to 'Edit', edit_doc_type_path(@doc_type) %> |
-<%= link_to 'Back', doc_types_path %>
+<%= link_to 'Edit Document Type', edit_doc_type_path(@doc_type), :class=>"btn btn-default btn-lg active" %> 
+<%= link_to 'Return to Index', doc_types_path, :class=>"btn btn-default btn-lg active" %>

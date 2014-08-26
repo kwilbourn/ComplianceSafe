@@ -461,7 +461,7 @@ body {
 ----------------------------------------------- */
 
 #page-wrapper {
-	width: 1080px;
+	width: 90%;
 	
 	-ms-box-sizing: border-box;
 	-moz-box-sizing: border-box;
@@ -551,7 +551,7 @@ header#masthead hgroup .logo img {
 
 header#masthead hgroup .support-text {
 	position: absolute;
-	top: 50%;
+	top: 10%;
 	right: 0;
 	
 	color: #4b4b4b;

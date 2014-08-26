@@ -15,6 +15,6 @@
     <%= f.input :issuing_authority %>
     <%= f.input :area_id, collection: Area.all, label_method: :description %>
       <div class="actions">
-    <%= f.submit %>
+    <%= f.submit "Update", :class=>"btn btn-primary btn-lg active"  %>
   </div>
 <% end %>
