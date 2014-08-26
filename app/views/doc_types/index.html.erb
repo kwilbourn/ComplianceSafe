@@ -16,6 +16,7 @@
         <td><%= doc_type.description %></td>
         <td><%= doc_type.issuing_authority %></td>
         <td><%= doc_type.area.identifier %></td>
+        <td><%= doc_type.documents.size %></td>
         <% if current_user.admin? %>
 	        <td><%= link_to 'Show', doc_type, :class=>"btn btn-default btn-lg active" %></td>
 	        <td><%= link_to 'Edit', edit_doc_type_path(doc_type), :class=>"btn btn-default btn-lg active" %></td>

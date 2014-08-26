@@ -14,9 +14,9 @@
       <tr>
         <td><%= area.description %></td>
         <td><%= area.identifier %></td>
-        <td><%= link_to 'Show', area %></td>
-        <td><%= link_to 'Edit', edit_area_path(area) %></td>
-        <td><%= link_to 'Destroy', area, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to 'Show', area, :class=>"btn btn-default btn-lg active"  %></td>
+        <td><%= link_to 'Edit', edit_area_path(area), :class=>"btn btn-default btn-lg active"  %></td>
+        <td><%= link_to 'Destroy', area, method: :delete, data: { confirm: 'Are you sure?' }, :class=>"btn btn-default btn-lg active"  %></td>
       </tr>
     <% end %>
   </tbody>
@@ -24,4 +24,4 @@
 
 <br>
 
-<%= link_to 'New Area', new_area_path %>
+<%= link_to 'New Area', new_area_path, :class=>"btn btn-primary btn-lg active" %>
