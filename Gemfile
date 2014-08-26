@@ -6,7 +6,6 @@ gem 'paperclip'
 gem 'simple_form'
 gem 'bootstrap-datepicker-rails'
 gem 'twitter-bootstrap-rails'
-gem 'jquery-fileupload-rails'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.1.4'

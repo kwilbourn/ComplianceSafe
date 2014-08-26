@@ -7,7 +7,11 @@ end
   # GET /documents
   # GET /documents.json
   def index
-    @documents = Document.accessible_by(current_ability)
+    if current_user.admin?
+      @documents = Document.all 
+    else
+      @documents = Document.accessible_by(current_ability)  
+    end
     @user = current_user
   end
 
