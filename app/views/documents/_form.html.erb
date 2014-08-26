@@ -14,8 +14,8 @@
     <%= f.input :permit_number %>
     <%= f.input :expiration_date, as: :string, input_html: { :class => "datepicker input-append", 'data-date-viewmode' => "years"} %><br>
       <div class="field"><%= f.file_field :document_upload %></div>
-      	<div id="filedrag">or drop files here</div>
+      	
   <div class="actions">
-    <%= f.submit %>
+    <%= f.submit "Update", :class=>"btn btn-primary btn-lg active" %>
   </div>
 <% end %>
