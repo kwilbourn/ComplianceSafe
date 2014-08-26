@@ -35,19 +35,19 @@
 			</nav>
 			</header>
 		<div id="main" class="site-main">
-		<div id="primary" class="content-area">
-			<div id="content" class="site-content" role="main">
-				<% if notice %>
-				  <p class="alert alert-success"><%= notice %></p>
-				<% end %>
-				<% if alert %>
-				  <p class="alert alert-danger"><%= alert %></p>
-				<% end %>
-				<div class="container">
-				<%= yield %>
+			<div id="primary" class="content-area">
+				<div id="content" class="site-content" role="main">
+					<% if notice %>
+					  <p class="alert alert-success"><%= notice %></p>
+					<% end %>
+					<% if alert %>
+					  <p class="alert alert-danger"><%= alert %></p>
+					<% end %>
+					<div class="container">
+					<%= yield %>
+					</div>
 				</div>
 			</div>
-		</div>
 	</div>
 </div>
 </body>
