@@ -1,5 +1,5 @@
 class DocumentsController < ApplicationController
-  before_action :set_document, only: [:show, :edit, :update, :destroy]
+  before_action :set_document, only: [:show, :edit, :update, :destroy, :verify]
   load_and_authorize_resource
 def file_attachment
   send_file 'document.file.path'
@@ -58,7 +58,17 @@ end
       end
     end
   end
-
+  def verify
+    respond_to do |format|
+      if @document.verify(document_params)
+        format.html { redirect_to @document, notice: 'Document was successfully updated.' }
+        format.json { render :show, status: :ok, location: @document }
+      else
+        format.html { render :edit }
+        format.json { render json: @document.errors, status: :unprocessable_entity }
+      end
+    end
+  end
   # DELETE /documents/1
   # DELETE /documents/1.json
   def destroy

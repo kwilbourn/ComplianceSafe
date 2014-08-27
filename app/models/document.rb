@@ -1,4 +1,5 @@
 class Document < ActiveRecord::Base
+  enum verify: [ :unverified, :verified, :incorrect, :needs_documentation ]
   belongs_to :doc_type
   belongs_to :user
   has_attached_file :document_upload

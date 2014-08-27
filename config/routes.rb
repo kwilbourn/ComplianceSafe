@@ -7,15 +7,9 @@ Rails.application.routes.draw do
 
   get 'user_areas/edit'
 
-  resources :doc_types
+  resources :doc_types, :areas, :documents
 
-  resources :areas
-
-  resources :document_types
-
-  get 'document_type/show'
-root :to => "documents#index"
-  resources :documents
+ root :to => "documents#index"
 
   devise_for :users
   # The priority is based upon order of creation: first created -> highest priority.
