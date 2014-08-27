@@ -35,6 +35,16 @@ Rails.application.configure do
   # Raises error for missing translations
   # config.action_view.raise_on_missing_translations = true
   config.action_mailer.default_url_options = { :host => 'localhost:3000' }
+   config.action_mailer.smtp_settings =  {
+          :enable_starttls_auto => true,
+          :address        => 'smtp.gmail.com',
+          :port           => 587,                                   # default port for gmail.
+          :domain         => 'www.gmail.com',
+          :authentication => :login,
+          :content_type   => "text/html",
+          :user_name      => 'kevinwilbourn@gmail.com',
+          :password       => 'm3d10cr1ty'
+                                                                  }
   #Paperclip configuration
   Paperclip.options[:command_path] = "c/Windows/system32/convert"
   Paperclip.options[:content_type_mappings] = { pdf: 'application/pdf' }

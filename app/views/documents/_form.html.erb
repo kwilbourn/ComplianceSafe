@@ -12,7 +12,9 @@
   <% end %>
     <%= f.input :doc_type_id, collection: DocType.all, label_method: :description  %>
     <%= f.input :permit_number %>
+    
     <%= f.input :expiration_date, as: :string, input_html: { :class => "datepicker input-append", 'data-date-viewmode' => "years"} %><br>
+    
       <div class="field"><%= f.file_field :document_upload %></div>
       	
   <div class="actions">

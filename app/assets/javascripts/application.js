@@ -15,5 +15,5 @@
 //= require turbolinks
 //= require_tree .
 $(function() {
-    $('input.datepicker').data({behaviour: "datepicker"}).datepicker();
+    $('input.datepicker').data({behaviour: "datepicker"}).datepicker({minDate: 0});
 });
