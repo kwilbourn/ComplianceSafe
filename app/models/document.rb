@@ -6,7 +6,8 @@ class Document < ActiveRecord::Base
   validates_with AttachmentPresenceValidator, :attributes => :document_upload
   validates_with AttachmentSizeValidator, :attributes => :document_upload, :less_than => 2.megabytes
   do_not_validate_attachment_file_type :document_upload 
-  def expired?
-    expiration_date < Time.current()
+  def days_left?
+    now = Date.today
+    return expiration_date - now
   end
 end

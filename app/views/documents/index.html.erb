@@ -4,7 +4,7 @@
   <thead>
     <tr>
     	<th>File</th>
-      
+      <th>Status</th>
       <th>Document Type</th>
       <th>Permit number</th>
       <th>Expiration date</th>
@@ -21,7 +21,17 @@
   				<%= image_tag('pdf_icon.png') %>
   			<% end %>
       		</td>
-        
+        <td>
+        	<% if document.days_left? < 1 %>
+        		<span class="glyphicon glyphicon-exclamation-sign">Expired</span>
+        		<% elsif document.days_left? < 60 %>
+        		<span class="glypicon glyphicon-info-sign">Warning</span>
+        		
+        	<% else %>
+        	    		<span class="glyphicon glyphicon-ok-sign">OK</span>
+        	<% end %>
+        	
+        </td>
         <td><%= document.doc_type.description %></td>
         <td><%= document.permit_number %></td>
         <td><%= document.expiration_date %></td>
