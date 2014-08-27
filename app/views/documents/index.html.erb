@@ -16,19 +16,19 @@
 
   <tbody>
     <% @documents.each do |document| %>
-      <tr style=height:40px;>
+      <tr style=height:60px;>
       	<td><%= link_to document.document_upload.url do %>
   				<%= image_tag('pdf_icon.png') %>
   			<% end %>
       		</td>
         <td>
         	<% if document.days_left? < 1 %>
-        		<span class="glyphicon glyphicon-exclamation-sign">Expired</span>
+        		<span class="glyphicon glyphicon-exclamation-sign" style="color:red; font-size: 1.8em;"></span>
         		<% elsif document.days_left? < 60 %>
-        		<span class="glypicon glyphicon-info-sign">Warning</span>
+        		<span class="glyphicon glyphicon-info-sign"  style="color:#FFFF66; font-size: 1.8em;"></span>
         		
         	<% else %>
-        	    		<span class="glyphicon glyphicon-ok-sign">OK</span>
+        	    		<span class="glyphicon glyphicon-ok-sign" style="color:green; font-size: 1.8em;"></span>
         	<% end %>
         	
         </td>
