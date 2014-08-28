@@ -40,6 +40,9 @@ GEM
       rack (>= 1.0.0)
       rack-test (>= 0.5.4)
       xpath (~> 2.0)
+    capybara-email (2.2.0)
+      capybara (~> 2.1.0)
+      mail
     climate_control (0.0.3)
       activesupport (>= 3.0)
     cocaine (0.5.4)
@@ -181,6 +184,7 @@ DEPENDENCIES
   bootstrap-datepicker-rails
   cancan
   capybara (~> 2.1.0)
+  capybara-email
   coffee-rails (~> 4.0.0)
   devise
   jbuilder (~> 2.0)

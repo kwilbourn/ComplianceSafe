@@ -1,0 +1,11 @@
+Your Permit is about to expire, <%= @user.name %>
+
+
+This notice is to inform you that your permit: <%= @document.doc_type.description %> is expiring soon.
+
+The expiration date is <%= @document.expiration_date %> which is <%= @document.expiration_date - Date.today %> days away.
+
+If you have updated the permit through <%= @document.doc_type.issuing_authority %>, you can upload the new version and change the expiration date here: <%= @document.url %>.
+
+
+Thank you for trusting Compliance Safe!
