@@ -1,28 +1,21 @@
 require "spec_helper"
 describe PermitExpireAlert do
-  before(:each) do
-    ActionMailer::Base.delivery_method = :test
-    ActionMailer::Base.perform_deliveries = true
-    ActionMailer::Base.deliveries = []
-    @user = {:email => 'kwilbourn@cmsistores.com', :first_name => 'Kevin'}
-    @document = {:permit_number => '1234', :expiration_date => '2014-12-31'} 
-    PermitExpireAlert.alert_email(@user, @document).deliver
+  describe 'instructions' do
+    let(:user) { user = create(:user) }
+    let(:document) { document = create(:document) }
+    let(:mail) { PermitExpireAlert.alert_email(user, document)}
+    it 'renders the receiver email' do
+      expect(mail.to).to eql([user.email])
+    end
+    it 'should set the subject to the correct subject' do
+      expect(mail.subject).to eql('Permit Expiration Alert - @document')
+    end
+    it 'renders the sender email' do
+      expect(mail.from).to eql(['notifications@compliance-safe.com']) 
+    end
+    it 'should have literal content' do
+      expect(mail.body.encoded).to match('Compliance Safe')
+    end
   end
-  after(:each) do
-    ActionMailer::Base.deliveries.clear
-  end
-  it 'should send an email' do
-    ActionMailer::Base.deliveries.count.should == 1
-  end
-  it 'renders the receiver email' do
-    ActionMailer::Base.deliveries.first.to.should == @user.email
-  end
-  it 'should set the subject to the correct subject' do
-    ActionMailer::Base.deliveries.first.subject.should == 'Permit Expiration Alert - @document'
-  end
-  it 'renders the sender email' do
-    ActionMailer::Base.deliveries.first.from.should == ['notifications@compliance-safe.com'] 
-  end
-  
 
 end

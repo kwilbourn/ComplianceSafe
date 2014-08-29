@@ -35,6 +35,15 @@ Rails.application.configure do
   # Raises error for missing translations
   # config.action_view.raise_on_missing_translations = true
   config.action_mailer.default_url_options = { :host => 'localhost:3000' }
+  config.action_mailer.delivery_method = :smtp
+  config.action_mailer.smtp_settings = {
+    address:              'mail.cmsistores.com',
+    port:                 5192,
+    domain:               'cmsistores.com',
+    user_name:            'kwilbourn',
+    password:             'm15t@k35',
+    authentication:       'plain',
+    enable_starttls_auto: false  }
   #Paperclip configuration
   Paperclip.options[:command_path] = "c/Windows/system32/convert"
   Paperclip.options[:content_type_mappings] = { pdf: 'application/pdf' }

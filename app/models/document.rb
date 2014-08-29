@@ -9,4 +9,8 @@ class Document < ActiveRecord::Base
   def expired?
     expiration_date < Time.current()
   end
+  def days_left?
+    now = Date.today
+    return Date.today - expiration_date
+  end
 end

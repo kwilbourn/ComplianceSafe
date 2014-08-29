@@ -36,6 +36,7 @@ end
     @document.user = current_user
     respond_to do |format|
       if @document.save
+        PermitExpireAlert.alert_email(@document.user, @document).deliver
         format.html { redirect_to @document, notice: 'Document was successfully created.' }
         format.json { render :show, status: :created, location: @document }
       else
