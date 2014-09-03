@@ -23,7 +23,7 @@ class Document < ActiveRecord::Base
     User.with_settings.find_each do |user|
       user.settings(:alerts).days.each do |alert_value| 
           Document.for_user(user).pending_notice(alert_value).find_each do |document|
-            PermitExpireAlert.alert_email(document.user, document)
+            PermitExpireAlert.alert_email(document.user, document).deliver
           end
       end
     end

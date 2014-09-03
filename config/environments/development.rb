@@ -39,11 +39,11 @@ Rails.application.configure do
   config.action_mailer.perform_deliveries = true
   config.action_mailer.raise_delivery_errors = true
   config.action_mailer.smtp_settings = {
-    address:              'smtp.gmail.com',
+    address:              'smtp.1and1.com',
     port:                 587,
-    domain:               'gmail.com ',
-    user_name:            'kevinwilbourn@gmail.com',
-    password:             'm3d10cr1ty',
+    domain:               'compliance-safe.com ',
+    user_name:            'notifications@compliance-safe.com',
+    password:             'C0nv3n13nc3',
     authentication:       'plain',
     enable_starttls_auto: true  }
   #Paperclip configuration
