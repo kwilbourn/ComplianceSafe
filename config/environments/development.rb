@@ -36,14 +36,16 @@ Rails.application.configure do
   # config.action_view.raise_on_missing_translations = true
   config.action_mailer.default_url_options = { :host => 'localhost:3000' }
   config.action_mailer.delivery_method = :smtp
+  config.action_mailer.perform_deliveries = true
+  config.action_mailer.raise_delivery_errors = true
   config.action_mailer.smtp_settings = {
-    address:              'mail.cmsistores.com',
-    port:                 5192,
-    domain:               'cmsistores.com',
-    user_name:            'kwilbourn',
-    password:             'm15t@k35',
+    address:              'smtp.gmail.com',
+    port:                 587,
+    domain:               'gmail.com ',
+    user_name:            'kevinwilbourn@gmail.com',
+    password:             'm3d10cr1ty',
     authentication:       'plain',
-    enable_starttls_auto: false  }
+    enable_starttls_auto: true  }
   #Paperclip configuration
   Paperclip.options[:command_path] = "c/Windows/system32/convert"
   Paperclip.options[:content_type_mappings] = { pdf: 'application/pdf' }

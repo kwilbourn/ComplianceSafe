@@ -6,4 +6,7 @@ class User < ActiveRecord::Base
   has_many :user_areas
   has_many :areas, through: :user_areas
   has_many :documents
+  has_settings do |s|
+    s.key :alerts, :defaults=> { :days=> [60,30,15,10,5,4,3,2,1], :overdue=> true}
+  end
 end

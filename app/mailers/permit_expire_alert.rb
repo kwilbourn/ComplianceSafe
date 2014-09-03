@@ -4,7 +4,8 @@ class PermitExpireAlert < ActionMailer::Base
   def alert_email(user, document)
     @user = user
     @document = document
-    mail(to: @user.email, subject: 'Permit Expiration Alert - @document')
+    @subject = "Permit Expiration Alert for Permit Number" + @document.permit_number
+    mail(to: @user.email, subject: @subject)
   end
   
 end
