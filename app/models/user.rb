@@ -9,4 +9,7 @@ class User < ActiveRecord::Base
   has_settings do |s|
     s.key :alerts, :defaults=> { :days=> [60,30,15,10,5,4,3,2,1], :overdue=> true}
   end
+  def name
+    first_name + " " + last_name
+  end
 end
