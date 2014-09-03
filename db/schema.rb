@@ -11,9 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-
-ActiveRecord::Schema.define(version: 20140903170609) do
-
+ActiveRecord::Schema.define(version: 20140903212744) do
 
   create_table "areas", force: true do |t|
     t.string   "description"
@@ -107,7 +105,6 @@ ActiveRecord::Schema.define(version: 20140903170609) do
   add_index "mailboxer_receipts", ["notification_id"], name: "index_mailboxer_receipts_on_notification_id"
   add_index "mailboxer_receipts", ["receiver_id", "receiver_type"], name: "index_mailboxer_receipts_on_receiver_id_and_receiver_type"
 
-
   create_table "settings", force: true do |t|
     t.string   "var",         null: false
     t.text     "value"
@@ -119,7 +116,6 @@ ActiveRecord::Schema.define(version: 20140903170609) do
 
   add_index "settings", ["target_type", "target_id", "var"], name: "index_settings_on_target_type_and_target_id_and_var", unique: true
 
-
   create_table "user_areas", force: true do |t|
     t.integer  "user_id"
     t.integer  "area_id"
@@ -128,12 +124,12 @@ ActiveRecord::Schema.define(version: 20140903170609) do
   end
 
   create_table "users", force: true do |t|
-    t.string   "email",                  default: "",    null: false
-    t.string   "encrypted_password",     default: "",    null: false
+    t.string   "email",                  default: "", null: false
+    t.string   "encrypted_password",     default: "", null: false
     t.string   "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
-    t.integer  "sign_in_count",          default: 0,     null: false
+    t.integer  "sign_in_count",          default: 0,  null: false
     t.datetime "current_sign_in_at"
     t.datetime "last_sign_in_at"
     t.string   "current_sign_in_ip"
@@ -148,7 +144,7 @@ ActiveRecord::Schema.define(version: 20140903170609) do
     t.string   "zip"
     t.string   "phone_number"
     t.string   "state"
-    t.boolean  "admin",                  default: false
+    t.integer  "authlevel",              default: 0
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true
