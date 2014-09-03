@@ -6,7 +6,8 @@ gem 'paperclip'
 gem 'simple_form'
 gem 'bootstrap-datepicker-rails'
 gem 'twitter-bootstrap-rails'
-
+gem 'ledermann-rails-settings'
+gem 'whenever'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.1.4'
 # Use sqlite3 as the database for Active Record
@@ -46,7 +47,9 @@ group :development, :test do
 end
 group :test do
   gem 'capybara', '~> 2.1.0'
+  gem 'capybara-email'
   gem 'shoulda-matchers', '~> 2.4.0'
+  gem 'factory_girl_rails', '~> 4.0'
 end
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem 'tzinfo-data', platforms: [:mingw, :mswin]

@@ -11,7 +11,9 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140827190628) do
+
+ActiveRecord::Schema.define(version: 20140903170609) do
+
 
   create_table "areas", force: true do |t|
     t.string   "description"
@@ -104,6 +106,19 @@ ActiveRecord::Schema.define(version: 20140827190628) do
 
   add_index "mailboxer_receipts", ["notification_id"], name: "index_mailboxer_receipts_on_notification_id"
   add_index "mailboxer_receipts", ["receiver_id", "receiver_type"], name: "index_mailboxer_receipts_on_receiver_id_and_receiver_type"
+
+
+  create_table "settings", force: true do |t|
+    t.string   "var",         null: false
+    t.text     "value"
+    t.integer  "target_id",   null: false
+    t.string   "target_type", null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "settings", ["target_type", "target_id", "var"], name: "index_settings_on_target_type_and_target_id_and_var", unique: true
+
 
   create_table "user_areas", force: true do |t|
     t.integer  "user_id"

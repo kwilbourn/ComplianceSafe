@@ -35,16 +35,18 @@ config.assets.precompile += %w( .svg .eot .woff .ttf )
   # Raises error for missing translations
   # config.action_view.raise_on_missing_translations = true
   config.action_mailer.default_url_options = { :host => 'localhost:3000' }
-   config.action_mailer.smtp_settings =  {
-          :enable_starttls_auto => true,
-          :address        => 'smtp.gmail.com',
-          :port           => 587,                                   # default port for gmail.
-          :domain         => 'www.gmail.com',
-          :authentication => :login,
-          :content_type   => "text/html",
-          :user_name      => 'kevinwilbourn@gmail.com',
-          :password       => 'm3d10cr1ty'
-                                                                  }
+  config.action_mailer.delivery_method = :smtp
+  config.action_mailer.perform_deliveries = true
+  config.action_mailer.raise_delivery_errors = true
+  config.action_mailer.smtp_settings = {
+    address:              'smtp.1and1.com',
+    port:                 587,
+    domain:               'compliance-safe.com ',
+    user_name:            'notifications@compliance-safe.com',
+    password:             'C0nv3n13nc3',
+    authentication:       'plain',
+    enable_starttls_auto: true  }
+
   #Paperclip configuration
   Paperclip.options[:command_path] = "c/Windows/system32/convert"
   Paperclip.options[:content_type_mappings] = { pdf: 'application/pdf' }

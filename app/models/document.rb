@@ -11,4 +11,23 @@ class Document < ActiveRecord::Base
     now = Date.today
     return expiration_date - now
   end
+  def days_left?
+    now = Date.today
+    return expiration_date - now
+  end
+  scope :pending_notice, lambda {
+    |alert_days| where("expiration_date = ?", Date.today + alert_days) 
+  }
+  scope :for_user, lambda {
+    |user| where("user_id = ?", user)
+  }
+  def self.send_alerts
+    User.with_settings.find_each do |user|
+      user.settings(:alerts).days.each do |alert_value| 
+          Document.for_user(user).pending_notice(alert_value).find_each do |document|
+            PermitExpireAlert.alert_email(document.user, document).deliver
+          end
+      end
+    end
+  end
 end
