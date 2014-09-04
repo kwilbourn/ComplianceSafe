@@ -2,30 +2,26 @@
 
 <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
   <%= devise_error_messages! %>
-  
+  <% if can? :manage, User %>
+  	<%= f.input :authlevel %>
+  <% end %>
   <%= f.input :first_name %>
   <%= f.input :last_name %>
-  <%= f.input :address %>
-  <%= f.input :address2 %>
-  <%= f.input :city %>
-  <%= f.input :state, collection: us_states, prompt: "Select Your State" %>
-  <%= f.input :zip%>
+  <p><%= f.input :address %>
+    <%= f.input :address2 %>
+    <%= f.input :city %>
+    <%= f.input :state, collection: us_states, prompt: "Select Your State" %>
+    <%= f.input :zip%></p>
   <%= f.input :phone_number %>
   <%= f.input :email, autofocus: true %>
 
   <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
     <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
   <% end %>
-
-  <div><%= f.label :password %> <i>(leave blank if you don't want to change it)</i><br />
-    <%= f.password_field :password, autocomplete: "off" %></div>
-
-  <div><%= f.label :password_confirmation %><br />
-    <%= f.password_field :password_confirmation, autocomplete: "off" %></div>
-
-  <div><%= f.label :current_password %> <i>(we need your current password to confirm your changes)</i><br />
-    <%= f.password_field :current_password, autocomplete: "off" %></div>
-
+<p>
+  <fieldset><div><%= f.label :current_password %> <i>(we need your current password to confirm your changes)</i><br />
+    <%= f.password_field :current_password, autocomplete: "off" %>
+</div></fieldset></p>
   <div><%= f.submit "Update" %></div>
 <% end %>
 

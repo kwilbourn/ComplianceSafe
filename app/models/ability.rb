@@ -3,18 +3,21 @@ class Ability
 
   def initialize(user)
     #Users can read, update, and create their own documents.
-    can :read, Document, :user_id => user.id
-    can :create, Document, :user_id => user.id
-    can :update, Document, :user_id => user.id
+    if user.admin?
+      can :manage, :all
+    else
+      can :read, Document, :user_id => user.id
+      can :create, Document, :user_id => user.id
+      can :update, Document, :user_id => user.id
+      can :read, DocType
+    end
+    if user.verification? || user.admin?
+      can :manage, DocType
+    end
     # Define abilities for the passed in user here. For example:
     #
     #   user ||= User.new # guest user (not logged in)
-    #   if user.admin?
-    #     can :manage, :all
-    #   else
-    #     can :read, :all
-    #   end
-    #
+       
     # The first argument to `can` is the action you are giving the user 
     # permission to do.
     # If you pass :manage it will apply to every action. Other common actions

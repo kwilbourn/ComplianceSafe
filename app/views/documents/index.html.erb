@@ -39,7 +39,9 @@
         <td><%= document.user.first_name %> <%= document.user.last_name %></td>
         <td><%= link_to 'View Details', document, :class=>"btn btn-default btn-lg active" %></td>
         <td><%= link_to 'Modify', edit_document_path(document), :class=>"btn btn-default btn-lg active" %></td>
+        <% if can? :destroy, Document %>
         <td><%= link_to 'Delete', document, method: :delete, data: { confirm: 'Are you sure?' }, :class=>"btn btn-default btn-lg active" %></td>
+        <% end %>
       </tr>
     <% end %>
   </tbody>

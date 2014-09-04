@@ -17,7 +17,7 @@
 float: left;
 padding-right: 20px;
 }
-.user_password, .user_city, .user_first_name, .user_address, .user_address2, .user_email {clear:both;}
+.user_password, .user_city, .user_first_name, .user_address, .user_address2, .user_email, fieldset {clear:both;}
 .table-striped, .table-hover {width:90%;}
 /*!
  * Bootstrap v2.3.2

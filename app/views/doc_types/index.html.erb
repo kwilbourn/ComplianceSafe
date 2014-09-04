@@ -1,11 +1,12 @@
 <h1>Available Document Types</h1>
-
-<table>
+<div class="table-responsive">
+<table class="table-striped table-hover">
   <thead>
     <tr>
       <th>Description</th>
       <th>Issuing authority</th>
       <th>Area</th>
+      <th>Document Count</th>
       <% if current_user.admin? %><th colspan="3"></th><% end %>
     </tr>
   </thead>
@@ -16,7 +17,7 @@
         <td><%= doc_type.description %></td>
         <td><%= doc_type.issuing_authority %></td>
         <td><%= doc_type.area.identifier %></td>
-        <td><%= doc_type.documents.size %></td>
+        <td><%= doc_type.documents.accessible_by(current_ability).size %></td>
         <% if current_user.admin? %>
 	        <td><%= link_to 'Show', doc_type, :class=>"btn btn-default btn-lg active" %></td>
 	        <td><%= link_to 'Edit', edit_doc_type_path(doc_type), :class=>"btn btn-default btn-lg active" %></td>
@@ -26,7 +27,8 @@
     <% end %>
   </tbody>
 </table>
-
+</div>
 <br>
-
+<% if can? :create, DocType %>
 <%= link_to 'New Doc type', new_doc_type_path, :class=>"btn btn-primary btn-lg active"  %>
+<% end%>
