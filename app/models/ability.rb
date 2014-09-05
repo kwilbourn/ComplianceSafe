@@ -8,11 +8,12 @@ class Ability
     else
       can :read, Document, :user_id => user.id
       can :create, Document, :user_id => user.id
-      can :update, Document, :user_id => user.id
       can :read, DocType
+      can :read, Area
     end
     if user.verification? || user.admin?
-      can :manage, DocType
+      can :read, DocType
+      can :update, DocType
     end
     # Define abilities for the passed in user here. For example:
     #
