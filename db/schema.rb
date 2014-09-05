@@ -11,7 +11,15 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140903212744) do
+ActiveRecord::Schema.define(version: 20140905162350) do
+
+  create_table "accounts", force: true do |t|
+    t.string   "name"
+    t.string   "client_code"
+    t.string   "subdomain"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "areas", force: true do |t|
     t.string   "description"
@@ -145,6 +153,7 @@ ActiveRecord::Schema.define(version: 20140903212744) do
     t.string   "phone_number"
     t.string   "state"
     t.integer  "authlevel",              default: 0
+    t.integer  "account_id",             default: 0
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true

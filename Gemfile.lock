@@ -62,6 +62,7 @@ GEM
       thread_safe (~> 0.1)
       warden (~> 1.2.3)
     diff-lcs (1.2.5)
+    enum_help (0.0.9)
     erubis (2.7.0)
     execjs (2.2.1)
     factory_girl (4.4.0)
@@ -198,6 +199,7 @@ DEPENDENCIES
   capybara-email
   coffee-rails (~> 4.0.0)
   devise
+  enum_help
   factory_girl_rails (~> 4.0)
   jbuilder (~> 2.0)
   jquery-rails

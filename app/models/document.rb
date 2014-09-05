@@ -2,6 +2,7 @@ class Document < ActiveRecord::Base
   enum verify: [ :unverified, :verified, :incorrect, :needs_documentation ]
   belongs_to :doc_type
   belongs_to :user
+  belongs_to :account
   has_attached_file :document_upload
   validates :document_upload, :attachment_presence => true
   validates_with AttachmentPresenceValidator, :attributes => :document_upload

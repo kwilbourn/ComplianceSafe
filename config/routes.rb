@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  resources :accounts
+
   get 'user_areas/index'
 
   get 'user_areas/update'

@@ -13,6 +13,10 @@
  *= require_tree .
  *= require_self
  */
+div.input.enum {
+	width: 25%;
+
+}
 .user_email, .user_first_name, .user_last_name, .user_address, .user_address2, .user_city, .user_state, .user_zip, .user_phone_number {
 float: left;
 padding-right: 20px;
