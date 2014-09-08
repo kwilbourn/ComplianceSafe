@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140905162350) do
+ActiveRecord::Schema.define(version: 20140908163353) do
 
   create_table "accounts", force: true do |t|
     t.string   "name"
@@ -58,6 +58,7 @@ ActiveRecord::Schema.define(version: 20140905162350) do
     t.datetime "document_upload_updated_at"
     t.integer  "doc_type_id"
     t.integer  "verify",                       default: 0
+    t.integer  "replaced_by"
   end
 
   create_table "mailboxer_conversation_opt_outs", force: true do |t|

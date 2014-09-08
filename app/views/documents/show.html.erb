@@ -2,5 +2,6 @@
 
 
 <p>&nbsp;</p>
-<%= link_to 'Edit', edit_document_path(@document), :class=>"btn btn-primary btn-lg active" %> |
+<%if can? :modify, Document %>
+<%= link_to 'Edit', edit_document_path(@document), :class=>"btn btn-primary btn-lg active" %> | <% end %>
 <%= link_to 'Return to All Documents', documents_path, :class=>"btn btn-default btn-lg active"  %>

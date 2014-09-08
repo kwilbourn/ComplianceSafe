@@ -10,10 +10,16 @@ class Ability
       can :create, Document, :user_id => user.id
       can :read, DocType
       can :read, Area
+      #area above needs to be modified to show only areas associated with that user.
     end
-    if user.verification? || user.admin?
+    if user.manager?
+      #need method to get all users for account and show all areas belonging to those users
+    end
+    if user.verification?
       can :read, DocType
       can :update, DocType
+      can :create, Area
+      can :update, Area
     end
     # Define abilities for the passed in user here. For example:
     #

@@ -38,7 +38,7 @@
         <td><%= document.created_at.strftime("%Y-%m-%d") %></td>
         <td><%= document.user.first_name %> <%= document.user.last_name %></td>
         <td><%= link_to 'View Details', document, :class=>"btn btn-default btn-lg active" %></td>
-        <td><%= link_to 'Modify', edit_document_path(document), :class=>"btn btn-default btn-lg active" %></td>
+        <% if can? :modify, Document %><td><%= link_to 'Modify', edit_document_path(document), :class=>"btn btn-default btn-lg active" %></td><% end %>
         <% if can? :destroy, Document %>
         <td><%= link_to 'Delete', document, method: :delete, data: { confirm: 'Are you sure?' }, :class=>"btn btn-default btn-lg active" %></td>
         <% end %>

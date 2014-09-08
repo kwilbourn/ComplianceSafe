@@ -28,15 +28,15 @@
 	  <div class="span4"><strong>Last Updated:</strong></div>
 	  <div class="span8"><%= @document.updated_at %> </div>
 	</div>
-	<div class="row-fluid">
+	<div class="row-fluid" style="height:40px;">
 	  <div class="span4"><strong>Verification Status:</strong></div>
 	  <div class="span8">
 	  	<% if @document.unverified? %>
-	  	<span class="glyphicon glyphicon-info-sign"  style="color:#FFFF66; font-size: 1.8em;"></span>
+	  	<span class="glyphicon glyphicon-info-sign"  style="color:#FFFF66; font-size: 1.8em; vertical-align:middle;"></span>
 	  	<% elsif @document.incorrect? || @document.needs_documentation? %>
-	  	<span class="glyphicon glyphicon-exclamation-sign"  style="color:red; font-size: 1.8em;"></span>
+	  	<span class="glyphicon glyphicon-exclamation-sign"  style="color:red; font-size: 1.8em; vertical-align:middle;"></span>
 	  	<% else %>
-	  	<span class="glyphicon glyphicon-ok-sign"  style="color:green; font-size: 1.8em;"></span>
+	  	<span class="glyphicon glyphicon-ok-sign"  style="color:green; font-size: 1.8em; vertical-align:middle;"></span>
 	  	<% end %>
 	  	
 	  	<%= @document.verify.titlecase() %> </div>
@@ -44,10 +44,22 @@
 	<div class="row-fluid">
 	  <div class="span4"><strong>File Attachment:</strong></div>
 	  <div class="span8">
-	  	<%= link_to  @document.document_upload.url do %>
-  			<%= image_tag('pdf_icon.png') %>
+	  	<div class="span4"><%= link_to  @document.document_upload.url do %>
+  			<%= image_tag('pdf_icon.png') %><br> <%= @document.document_upload_file_size / 1000 %> KB
   		<% end %>
-		</div>
+  		</div>
+  		<div class="span4">	
+			<%= link_to  @document.document_upload.url do %>
+  				<%= image_tag('print_icon_32.png') %>
+  			<% end %>
+  		</div>
+  		<div class="span4">	
+  			<%= link_to  @document.document_upload.url do %>
+  				<%= image_tag('email_icon_32.jpg') %>
+  			<% end %>
+  		</div>
+	  </div>
+
 	</div>
 </div>
 </div>
