@@ -8,13 +8,10 @@ class Document < ActiveRecord::Base
   validates_with AttachmentPresenceValidator, :attributes => :document_upload
   validates_with AttachmentSizeValidator, :attributes => :document_upload, :less_than => 2.megabytes
   do_not_validate_attachment_file_type :document_upload 
+  
   def days_left?
     now = Date.today
-    return expiration_date - now
-  end
-  def days_left?
-    now = Date.today
-    return expiration_date - now
+    return (expiration_date - now).to_i
   end
   scope :pending_notice, lambda {
     |alert_days| where("expiration_date = ?", Date.today + alert_days) 
