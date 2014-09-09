@@ -49,9 +49,8 @@
   		<% end %>
   		</div>
   		<div class="span4">	
-			<%= link_to  @document.document_upload.url do %>
-  				<%= image_tag('print_icon_32.png') %>
-  			<% end %>
+			<%= link_to image_tag('print_icon_32.png'), @document.document_upload.url, :onclick => "window.open(this.href,'win2','status=no,toolbar=no,scrollbars=yes,titlebar=no,menubar=no,resizable=yes,width=640,height=480,directories=no,location=no'); return false;" %>
+  				
   		</div>
   		<div class="span4">	
   			<%= link_to  @document.document_upload.url do %>
