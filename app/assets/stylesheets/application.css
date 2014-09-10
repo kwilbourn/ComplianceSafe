@@ -13,6 +13,47 @@
  *= require_tree .
  *= require_self
  */
+
+th > a.sortable:before {
+		   content: " \e150";
+    		position: relative;
+		  top: 1px;
+		  display: inline-block;
+		  font-family: 'Glyphicons Halflings';
+		  font-style: normal;
+		  font-weight: normal;
+		  line-height: 1;
+		
+		  -webkit-font-smoothing: antialiased;
+		  -moz-osx-font-smoothing: grayscale;
+ }
+th > a.asc:before {
+    content: " \e093";
+    position: relative;
+  top: 1px;
+  display: inline-block;
+  font-family: 'Glyphicons Halflings';
+  font-style: normal;
+  font-weight: normal;
+  line-height: 1;
+
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+th > a.desc:before {
+    content: " \e094";
+    position: relative;
+  top: 1px;
+  display: inline-block;
+  font-family: 'Glyphicons Halflings';
+  font-style: normal;
+  font-weight: normal;
+  line-height: 1;
+
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
 div.input.enum {
 	width: 25%;
 

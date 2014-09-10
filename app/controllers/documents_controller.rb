@@ -1,6 +1,7 @@
 class DocumentsController < ApplicationController
   before_action :set_document, only: [:show, :edit, :update, :destroy, :verify]
   load_and_authorize_resource
+  helper_method :sort_column, :sort_direction
 def file_attachment
   send_file 'document.file.path'
 end
@@ -8,9 +9,10 @@ end
   # GET /documents.json
   def index
     if current_user.admin?
-      @documents = Document.all 
+      params[:sort] ||= "expiration_date"
+      @documents = Document.order(sort_column + " " + sort_direction)
     else
-      @documents = Document.accessible_by(current_ability)  
+      @documents = Document.accessible_by(current_ability).order(sort_column + " " + sort_direction)  
     end
     @user = current_user
   end
@@ -88,5 +90,11 @@ end
     # Never trust parameters from the scary internet, only allow the white list through.
     def document_params
       params.require(:document).permit(:name, :permit_number, :expiration_date, :document_upload, :doc_type_id, :replaced_by)
+    end
+    def sort_column
+      Document.column_names.include?(params[:sort]) ? params[:sort] : "expiration_date"
+    end
+    def sort_direction
+      %w[asc desc].include?(params[:direction]) ? params[:direction] : "asc"
     end
 end
