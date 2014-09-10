@@ -1,5 +1,7 @@
-<h1>Listing documents</h1>
-<div class="table-responsive">
+<div class="page-header"><span class="span6"><h1>Listing documents</h1></span>
+<span class="span8"><%= render 'statusguide' %></span></div>
+
+<div class="table-responsive" style="clear: both;">
 
 <%= form_tag documents_path, :method => 'get' do %>
 <%= hidden_field_tag :direction, params[:direction] %>
@@ -14,8 +16,9 @@
   <thead>
     <tr>
     	<th>File</th>
-      <th>Status</th>
-      <th>Document Type</th>
+      <th><%= sortable "expiration_date", "Expiration Status" %></th>
+      <th><%= sortable "verify", "Verification Status" %></th>
+      <th><%= sortable "doc_type_id", "Document Type" %></th>
       <th><%= sortable "permit_number" %></th>
       <th><%= sortable "expiration_date" %></th>
       <th><%= sortable "created_at", "Created" %></th>
@@ -42,6 +45,17 @@
         	<% end %>
         	
         </td>
+        
+        <td>
+        	<% if document.unverified? %>
+	  	<span class="glyphicon glyphicon-info-sign"  style="color:#FFFF66; font-size: 1.8em; vertical-align:middle;"></span>
+	  	<% elsif document.incorrect? || document.needs_documentation? %>
+	  	<span class="glyphicon glyphicon-exclamation-sign"  style="color:red; font-size: 1.8em; vertical-align:middle;"></span>
+	  	<% else %>
+	  	<span class="glyphicon glyphicon-ok-sign"  style="color:green; font-size: 1.8em; vertical-align:middle;"></span>
+	  	<% end %>
+        </td>
+        
         <td><%= document.doc_type.description %></td>
         <td><%= document.permit_number %></td>
         <td><%= document.expiration_date %></td>

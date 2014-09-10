@@ -29,6 +29,12 @@ end
 
 # GET /documents/1/verify
 def verify
+  
+end
+
+# GET /documents/need_verify
+def need_verify
+  @documents = Document.accessible_by(current_ability).verify?(!verified).search(params[:search]).order(sort_column + " " + sort_direction).paginate(:per_page => 10, :page => params[:page])  
 end
   # POST /documents
   # POST /documents.json
