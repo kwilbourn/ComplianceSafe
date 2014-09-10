@@ -1,5 +1,5 @@
 class Document < ActiveRecord::Base
-  enum verify: [ :unverified, :verified, :incorrect, :needs_documentation ]
+  enum verify: [ :unverified, :verified, :incorrect, :needs_documentation, :replaced ]
   belongs_to :doc_type
   belongs_to :user
   belongs_to :account
@@ -19,6 +19,9 @@ class Document < ActiveRecord::Base
   scope :for_user, lambda {
     |user| where("user_id = ?", user)
   }
+  scope :verification_status, lambda {
+    |verification_status| where("verify = ?", verification_status)
+  }
   def self.send_alerts
     User.with_settings.find_each do |user|
       user.settings(:alerts).days.each do |alert_value| 
@@ -28,4 +31,11 @@ class Document < ActiveRecord::Base
       end
     end
   end
+def self.search(search)
+  if search
+    where('permit_number LIKE ?', "%#{search}%")
+  else
+    all
+  end
+end
 end

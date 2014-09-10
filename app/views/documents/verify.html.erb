@@ -1,5 +1,7 @@
 <%= render 'display' %>
 <p>&nbsp;</p>
-<%= link_to 'Verified and Next', documents_path %>
-<%= link_to 'Make Corrections', edit_document_path(@document), :class=>"btn btn-primary btn-lg active" %> |
+<% if can? :verify, Document %>
+<%= link_to 'Verified and Next', documents_path, :class=>"btn btn-primary btn-lg active" %> |
+<%= link_to 'Make Corrections', edit_document_path(@document), :class=>"btn btn-default btn-lg active" %> |
 <%= link_to 'Return to Verification Holding Pen', documents_path, :class=>"btn btn-default btn-lg active"  %>
+<% end %>

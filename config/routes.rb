@@ -8,6 +8,8 @@ Rails.application.routes.draw do
   get 'user_areas/create'
 
   get 'user_areas/edit'
+  get 'documents/:id/verify' => 'documents#verify', as: :verify
+ 
 
   resources :doc_types, :areas, :documents
 

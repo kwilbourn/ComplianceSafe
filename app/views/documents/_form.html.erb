@@ -15,7 +15,7 @@
     
     <%= f.input :expiration_date, as: :string, input_html: { :class => "datepicker input-append", 'data-date-viewmode' => "years"} %><br>
     
-      <div class="field"><%= f.file_field :document_upload %></div>
+      <div class="field"><%= f.file_field :document_upload, :class => "dropzone" %></div>
       	
   <div class="actions">
     <%= f.submit "Update", :class=>"btn btn-primary btn-lg active" %>

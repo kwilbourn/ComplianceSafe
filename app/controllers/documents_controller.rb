@@ -8,12 +8,8 @@ end
   # GET /documents
   # GET /documents.json
   def index
-    if current_user.admin?
-      params[:sort] ||= "expiration_date"
-      @documents = Document.order(sort_column + " " + sort_direction)
-    else
-      @documents = Document.accessible_by(current_ability).order(sort_column + " " + sort_direction)  
-    end
+    @documents = Document.accessible_by(current_ability).search(params[:search]).order(sort_column + " " + sort_direction).paginate(:per_page => 10, :page => params[:page])  
+
     @user = current_user
   end
 
@@ -31,6 +27,9 @@ end
   def edit
   end
 
+# GET /documents/1/verify
+def verify
+end
   # POST /documents
   # POST /documents.json
   def create
@@ -60,17 +59,7 @@ end
       end
     end
   end
-  def verify
-    respond_to do |format|
-      if @document.verify(document_params)
-        format.html { redirect_to @document, notice: 'Document was successfully updated.' }
-        format.json { render :show, status: :ok, location: @document }
-      else
-        format.html { render :edit }
-        format.json { render json: @document.errors, status: :unprocessable_entity }
-      end
-    end
-  end
+  
   # DELETE /documents/1
   # DELETE /documents/1.json
   def destroy
@@ -90,6 +79,9 @@ end
     # Never trust parameters from the scary internet, only allow the white list through.
     def document_params
       params.require(:document).permit(:name, :permit_number, :expiration_date, :document_upload, :doc_type_id, :replaced_by)
+    end
+    def verify_params
+      params.permit(:document, :name, :permit_number, :expiration_date, :document_upload, :doc_type_id, :replaced_by)
     end
     def sort_column
       Document.column_names.include?(params[:sort]) ? params[:sort] : "expiration_date"
