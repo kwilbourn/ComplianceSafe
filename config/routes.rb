@@ -1,6 +1,4 @@
 Rails.application.routes.draw do
-  resources :accounts
-
   get 'user_areas/index'
 
   get 'user_areas/update'
@@ -9,9 +7,18 @@ Rails.application.routes.draw do
 
   get 'user_areas/edit'
   get 'documents/:id/verify' => 'documents#verify', as: :verify
- 
+  get 'documents/need_verify' => 'documents#need_verify', as: :need_verify
+ resources :documents do
+   member do
+     get :verify_click
 
-  resources :doc_types, :areas, :documents
+   end
+ end
+
+resources :doc_types
+resources :areas
+resources :documents
+resources :accounts
 
  root :to => "documents#index"
 

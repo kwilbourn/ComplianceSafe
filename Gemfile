@@ -11,6 +11,7 @@ gem 'whenever'
 gem 'enum_help'
 gem 'will_paginate', '~> 3.0.5'
 gem 'jquery-rails'
+gem 'proximal_records'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.1.4'
 # Use sqlite3 as the database for Active Record

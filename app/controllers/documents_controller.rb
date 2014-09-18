@@ -28,13 +28,29 @@ end
   end
 
 # GET /documents/1/verify
-def verify
-  
-end
+  def verify
+    
+  end
+  def verify_click
+    document = Document.find(params[:id])
+    document.verify = 1 #set verification status to 1
+    document.save
+    next_document = document.next_verify
+    if next_document.nil? && document.prev_verify.nil?
+      redirect_to @document, notice: 'Document Verification Completed.'
+      #format.json { render :show, status: :verified, location: @document }
+    elsif (next_document.nil?)
+      redirect_to verify_path(document.prev_verify)
+    else
+      redirect_to verify_path(next_document)
+    end
+  end
+
+# GET /documents/1/verify
 
 # GET /documents/need_verify
 def need_verify
-  @documents = Document.accessible_by(current_ability).verify?(!verified).search(params[:search]).order(sort_column + " " + sort_direction).paginate(:per_page => 10, :page => params[:page])  
+  @documents = Document.accessible_by(current_ability).where("verify = ?", 0).search(params[:search]).order(sort_column + " " + sort_direction).paginate(:per_page => 10, :page => params[:page])  
 end
   # POST /documents
   # POST /documents.json

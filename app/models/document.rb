@@ -22,6 +22,13 @@ class Document < ActiveRecord::Base
   scope :verification_status, lambda {
     |verification_status| where("verify = ?", verification_status)
   }
+  def next_verify
+    Document.where("id > ?", self.id).where("verify = ?", 0).first
+  end
+  def prev_verify
+    Document.where("id < ?", self.id).where("verify = ?", 0).last
+  end
+  
   def self.send_alerts
     User.with_settings.find_each do |user|
       user.settings(:alerts).days.each do |alert_value| 
