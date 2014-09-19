@@ -11,6 +11,7 @@
     <%= f.input :address2 %>
     <%= f.input :city %>
     <%= f.input :state, collection: us_states, prompt: "Select Your State" %>
+    <%= f.input :country, collection: countries, prompt: "Select Your Country" %>
     <%= f.input :zip%></p>
   <%= f.input :phone_number %>
   <%= f.input :email, autofocus: true %>

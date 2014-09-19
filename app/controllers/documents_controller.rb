@@ -55,8 +55,13 @@ end
   # POST /documents
   # POST /documents.json
   def create
-    @document = Document.new(document_params)
-    @document.user = current_user
+ 
+    if current_user.site? 
+      @document = Document.new(document_params)
+      @document.user = current_user
+    else
+      @document = Document.new(admin_params)  
+    end
     respond_to do |format|
       if @document.save
         format.html { redirect_to @document, notice: 'Document was successfully created.' }
@@ -101,6 +106,9 @@ end
     # Never trust parameters from the scary internet, only allow the white list through.
     def document_params
       params.require(:document).permit(:name, :permit_number, :expiration_date, :document_upload, :doc_type_id, :replaced_by)
+    end
+    def admin_params
+      params.require(:document).permit(:name, :permit_number, :expiration_date, :document_upload, :doc_type_id, :replaced_by, :user_id)
     end
     def verify_params
       params.permit(:document, :name, :permit_number, :expiration_date, :document_upload, :doc_type_id, :replaced_by)

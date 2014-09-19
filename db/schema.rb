@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140908163353) do
+ActiveRecord::Schema.define(version: 20140919191847) do
 
   create_table "accounts", force: true do |t|
     t.string   "name"
@@ -155,6 +155,7 @@ ActiveRecord::Schema.define(version: 20140908163353) do
     t.string   "state"
     t.integer  "authlevel",              default: 0
     t.integer  "account_id",             default: 0
+    t.string   "country"
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true
