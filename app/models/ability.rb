@@ -12,8 +12,11 @@ class Ability
       can :read, Area
       #area above needs to be modified to show only areas associated with that user.
     end
-    if user.manager?
+    if user.manager? || user.viewer?
       #need method to get all users for account and show all areas belonging to those users
+    end
+    if user.viewer?
+      can :update, Document
     end
     if user.verification?
       can :read, DocType

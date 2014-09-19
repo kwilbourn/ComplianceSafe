@@ -3,7 +3,7 @@ class User < ActiveRecord::Base
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
-  enum authlevel: [ :admin , :verification, :manager, :site ]
+  enum authlevel: [ :admin , :verification, :manager, :viewer, :site ]
   has_many :user_areas
   has_many :areas, through: :user_areas
   has_many :documents
