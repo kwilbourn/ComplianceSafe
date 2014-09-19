@@ -13,6 +13,6 @@
   <%= @doc_type.area.identifier %>
   <%= @doc_type.area.description %>
 </p>
-
+<IFRAME SRC=<%= @doc_type.sample_file.url %> height="400px" width="500px" align=center FRAMEBORDER="0" SCROLLING="no"></IFRAME>
 <%= link_to 'Edit Document Type', edit_doc_type_path(@doc_type), :class=>"btn btn-default btn-lg active" %> 
 <%= link_to 'Return to Index', doc_types_path, :class=>"btn btn-default btn-lg active" %>

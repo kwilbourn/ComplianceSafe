@@ -14,6 +14,7 @@
     <%= f.input :description %>
     <%= f.input :issuing_authority %>
     <%= f.input :area_id, collection: Area.all, label_method: :description %>
+     <div class="field"><%= f.file_field :sample_file, :class => "dropzone" %></div>
       <div class="actions">
     <%= f.submit "Update", :class=>"btn btn-primary btn-lg active"  %>
   </div>

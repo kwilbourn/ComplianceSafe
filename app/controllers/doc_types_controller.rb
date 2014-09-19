@@ -1,6 +1,8 @@
 class DocTypesController < ApplicationController
   before_action :set_doc_type, only: [:show, :edit, :update, :destroy]
-
+def file_attachment
+  send_file 'doc_type.file.path'
+end
   # GET /doc_types
   # GET /doc_types.json
   def index
@@ -69,6 +71,6 @@ class DocTypesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def doc_type_params
-      params.require(:doc_type).permit(:description, :issuing_authority, :area_id)
+      params.require(:doc_type).permit(:description, :issuing_authority, :area_id, :sample_file)
     end
 end

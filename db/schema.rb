@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140919191847) do
+ActiveRecord::Schema.define(version: 20140919215130) do
 
   create_table "accounts", force: true do |t|
     t.string   "name"
@@ -34,6 +34,10 @@ ActiveRecord::Schema.define(version: 20140919191847) do
     t.integer  "area_id"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "sample_file_file_name"
+    t.string   "sample_file_content_type"
+    t.integer  "sample_file_file_size"
+    t.datetime "sample_file_updated_at"
   end
 
   create_table "document_types", force: true do |t|
