@@ -13,7 +13,7 @@
 	
 	<%= @document.days_left? %> days away.</p>
 	<p>
-      If you have updated the permit through <%= @document.doc_type.issuing_authority %>, you can upload the new version and change the expiration date here: <%= link_to @document.doc_type.description, @document, :only_path => false %>.
+      If you have updated the permit through <%= @document.doc_type.issuing_authority %>, you can upload the new version and change the expiration date here: <%= link_to @document.doc_type.description, @document, :host => "compliance-safe.com", :only_path => false %>.
     </p>
     <p>Thank you for trusting Compliance Safe!</p>
   </body>
