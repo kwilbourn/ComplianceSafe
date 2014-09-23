@@ -14,10 +14,8 @@
 //= require jquery_ujs
 //= require turbolinks
 //= require_tree .
-$(function() {
-
-	
-    $('input.datepicker').data({behaviour: "datepicker"}).datepicker({ dateFormat: 'yyyy-mm-dd'});
+jQuery(document).ready(function() {
+    $('.datepicker').data({behaviour: "datepicker"}).datepicker({ dateFormat: 'yyyy-mm-dd'});
 });
 //$('.datepicker').datepicker({ dateFormat: 'yyyy-mm-dd'});
 //var nowTemp = new Date();

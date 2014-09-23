@@ -9,7 +9,7 @@ class ApplicationController < ActionController::Base
     redirect_to root_url, :alert => exception.message
   end
    def configure_devise_permitted_parameters
-    registration_params = [:email, :password, :password_confirmation, :first_name, :last_name, :address, :address2, :city, :state, :zip, :phone_number]
+    registration_params = [:email, :password, :password_confirmation, :first_name, :last_name, :address, :address2, :city, :state, :zip, :phone_number, :country, :authlevel]
 
     if params[:action] == 'update'
       devise_parameter_sanitizer.for(:account_update) { 

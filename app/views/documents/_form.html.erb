@@ -11,7 +11,7 @@
     </div>
   <% end %>
   	<% if !current_user.site? %>
-  		<%= f.input :user_id, collection: User.all, label_method: :name %>
+  		<%= f.input :user_id, collection: User.accessible_by(current_ability, :update), label_method: :name %>
   	<% end %>
     <%= f.input :doc_type_id, collection: DocType.all, label_method: :description  %>
     <%= f.input :permit_number %>

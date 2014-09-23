@@ -60,7 +60,7 @@ end
       @document = Document.new(document_params)
       @document.user = current_user
     else
-      @document = Document.new(admin_params)  
+      @document = Document.new(document_params) 
     end
     respond_to do |format|
       if @document.save
@@ -105,7 +105,7 @@ end
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def document_params
-      params.require(:document).permit(:name, :permit_number, :expiration_date, :document_upload, :doc_type_id, :replaced_by)
+      params.require(:document).permit(:name, :permit_number, :expiration_date, :document_upload, :doc_type_id, :replaced_by, :user_id)
     end
     def admin_params
       params.require(:document).permit(:name, :permit_number, :expiration_date, :document_upload, :doc_type_id, :replaced_by, :user_id)
