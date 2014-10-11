@@ -5,6 +5,8 @@ gem 'cancan'
 gem 'paperclip'
 gem 'simple_form'
 gem 'bootstrap-datepicker-rails'
+gem "therubyracer"
+gem "less-rails"
 gem 'twitter-bootstrap-rails'
 gem 'ledermann-rails-settings'
 gem 'whenever'
