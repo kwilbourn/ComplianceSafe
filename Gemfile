@@ -12,7 +12,6 @@ gem 'ledermann-rails-settings'
 gem 'whenever'
 gem 'enum_help'
 gem 'will_paginate', '~> 3.0.5'
-gem 'jquery-rails'
 gem 'proximal_records'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.1.4'
@@ -43,15 +42,17 @@ gem 'sdoc', '~> 0.4.0',          group: :doc
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
+  # Use sqlite3 as the database for Active Record
+  gem 'pg'
 
 # Use debugger
 # gem 'debugger', group: [:development, :test]
 group :development, :test do
   gem 'rspec-rails', '~> 2.0'
   gem 'minitest'
-  # Use sqlite3 as the database for Active Record
-  gem 'sqlite3'
+
 end
+gem 'rails_12factor', group: :production
 group :test do
   gem 'capybara', '~> 2.1.0'
   gem 'capybara-email'
@@ -60,3 +61,4 @@ group :test do
 end
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem 'tzinfo-data', platforms: [:mingw, :mswin]
+ruby '2.1.2'
