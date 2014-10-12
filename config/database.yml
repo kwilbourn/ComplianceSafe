@@ -23,6 +23,6 @@ test:
 
 production:
   <<: *default
-  database: ruby_compliance_safe_production
+  database: csafe-production
   username: compliance-safe
   password: <%= ENV['RUBY_COMPLIANCE_SAFE_DATABASE_PASSWORD'] %>
