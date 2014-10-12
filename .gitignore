@@ -18,3 +18,4 @@
 # Ignore uploads directory
 /public/system/documents
 
+.env
