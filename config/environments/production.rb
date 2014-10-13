@@ -81,4 +81,14 @@ Rails.application.configure do
   config.active_record.dump_schema_after_migration = false
   config.serve_static_assets = true
   config.assets.compile = true
+  
+  #Store Paperclip in S3 Bucket
+  config.paperclip_defaults = {
+    :storage => s3,
+    :s3_credentials => {
+      :bucket => ENV['S3_BUCKET_NAME'],
+      :access_key_id => ENV['AWS_ACCESS_KEY_ID'],
+      :secret_access_key => ENV['AWS_SECRET_ACCESS_KEY']
+    }
+  }
 end
