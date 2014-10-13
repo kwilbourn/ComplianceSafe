@@ -3,6 +3,7 @@ source 'https://rubygems.org'
 gem 'devise'
 gem 'cancan'
 gem 'paperclip'
+gem 'aws-sdk'
 gem 'simple_form'
 gem 'bootstrap-datepicker-rails'
 gem "therubyracer"
