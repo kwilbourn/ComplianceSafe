@@ -10,7 +10,7 @@
       </ul>
     </div>
   <% end %>
-  	<% if !current_user.type = Client_site %>
+  	<% if !current_user.type = "Client_site" %>
   		<%= f.input :user_id, collection: User.accessible_by(current_ability, :update), label_method: :name %>
   	<% end %>
     <%= f.input :doc_type_id, collection: DocType.all, label_method: :description  %>

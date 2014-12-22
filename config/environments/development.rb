@@ -48,6 +48,6 @@ config.assets.precompile += %w( .svg .eot .woff .ttf )
     enable_starttls_auto: true  }
 
   #Paperclip configuration
-  Paperclip.options[:command_path] = "c/Windows/system32/convert"
+  Paperclip.options[:command_path] = "/usr/local/bin/"
   Paperclip.options[:content_type_mappings] = { pdf: 'application/pdf' }
 end
