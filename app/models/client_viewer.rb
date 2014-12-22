@@ -1,0 +1,2 @@
+class ClientViewer < User
+end
