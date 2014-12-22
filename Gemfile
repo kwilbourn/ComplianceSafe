@@ -1,7 +1,7 @@
 source 'https://rubygems.org'
 
 gem 'devise'
-gem 'cancan'
+gem 'cancancan'
 gem 'paperclip'
 gem 'aws-sdk'
 gem 'simple_form'

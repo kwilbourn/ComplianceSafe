@@ -3,7 +3,7 @@ class Ability
 
   def initialize(user)
     #Users can read, update, and create their own documents.
-    if user.admin?
+    if user.type = Admin
       can :manage, :all
     else
       can :read, Document, :user_id => user.id
@@ -12,13 +12,13 @@ class Ability
       can :read, Area
       #area above needs to be modified to show only areas associated with that user.
     end
-    if user.manager? || user.viewer?
+    #if user.type = Client_manager
       #need method to get all users for account and show all areas belonging to those users
-    end
-    if user.viewer?
+    #end
+    #if user.type = Client_viewer
       can :update, Document
-    end
-    if user.verification?
+    #end
+    if user.type = Manager
       can :read, DocType
       can :update, DocType
       can :create, Area
