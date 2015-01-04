@@ -1,6 +1,7 @@
 source 'https://rubygems.org'
 
 gem 'devise'
+gem 'devise_invitable', '~> 1.3.4'
 gem 'cancancan'
 gem 'paperclip'
 gem 'aws-sdk'
