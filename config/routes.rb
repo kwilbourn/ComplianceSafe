@@ -21,8 +21,10 @@ resources :documents
 resources :accounts
 
  root :to => "documents#index"
+devise_for :client_managers, :controllers => {registrations: 'registrations'}
 
   devise_for :users
+  
   scope "/admin" do
     resources :users
   end
