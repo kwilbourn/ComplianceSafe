@@ -15,12 +15,15 @@
     <%= f.label :name %><br>
     <%= f.text_field :name %>
   </div>
-  
-    <%= label_tag @client_manager.first_name %>
-    <%= builder.text_field @client_manager.first_name %>
-    <%= label_tag :last_name %>
-    <%= builder.text_field :last_name %>
-  
+  <%= f.fields_for :client_managers do |user_form| %>
+    <div class="field"><%= user_form.label :email %><br />
+    <%= user_form.email_field :email %></div>
+    <div class="field"><%= user_form.label :password %><br />
+    <%= user_form.password_field :password %></div>
+    <div class="field"><%= user_form.label :password_confirmation %><br />
+    <%= user_form.password_field :password_confirmation %></div>
+  <% end %>
+     
 
   
   <div class="field">

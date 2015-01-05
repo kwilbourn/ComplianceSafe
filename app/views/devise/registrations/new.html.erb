@@ -1,23 +1,19 @@
-<h2>Sign up</h2>
-
+<h2>Get Started - It's Easy</h2>
+<% resource.build_account %>
 <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
   <%= devise_error_messages! %>
 
     
 <%= f.input :first_name %>
 <%= f.input :last_name %>
-<%= f.input :address %>
-<%= f.input :address2 %>
-<%= f.input :city %>
-<%= f.input :state, collection: us_states, prompt: "Select Your State" %>
-<%= f.input :country, collection: countries, prompt: "Select Your Country" %>
-<%= f.input :zip %>
-    <%= f.input :phone_number %>
+<%= f.fields_for :account do |builder| %>
+    <%= builder.input :name, label: 'Your Company Name' %>
+	<%end%>
     <%= f.input :email, autofocus: true %>
 
 <%= f.input :password, autocomplete: "off" %>
 <%= f.input :password_confirmation, autocomplete: "off" %>
-<%= f.button :submit %>
+<%= f.button :submit, "Start Your Free Trial", :class=> "btn btn-primary btn-lg active"  %>
 <% end %>
 
 <%= render "devise/shared/links" %>
