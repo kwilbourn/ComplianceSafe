@@ -22,7 +22,7 @@ FactoryGirl.define do
     expiration_date Date.today + 100.days
     user_id         1
     doc_type_id     1
-    document_upload { fixture_file_upload(Rails.root.join('spec', 'factories', 'pdf-sample.pdf'), 'pdf') }
+    #document_upload { fixture_file_upload(Rails.root.join('spec', 'factories', 'pdf-sample.pdf'), 'pdf') }
   end
   factory :doc_type do
     description       "Example Doc Type"
