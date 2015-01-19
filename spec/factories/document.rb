@@ -3,15 +3,15 @@ FactoryGirl.define do
   factory :user do
     first_name  "John"
     last_name   "Doe"
-    admin       false
+    type        "ClientSite"
     email       "johnd@example.com"
     password    "changeme"
     password_confirmation "changeme"
   end
-  factory :admin, class: User do
+  factory :admin, class: Admin do
     first_name  "Admin"
     last_name   "User"
-    admin       true
+    type        "Admin"
     email       "administrator@example.com"
     password    "changeme"
     password_confirmation "changeme"
