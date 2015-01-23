@@ -23,18 +23,22 @@ describe AccountsController do
   # This should return the minimal set of attributes required to create a valid
   # Account. As you add validations to Account, be sure to
   # adjust the attributes here as well.
-  let(:valid_attributes) { { "name" => "MyString" } }
+before do
+    account = FactoryGirl.create(:account)
+    sign_in FactoryGirl.create(:user)
+  end
+  #let(:valid_attributes) { account = FactoryGirl.attributes_for(:account)}
 
   # This should return the minimal set of values that should be in the session
   # in order to pass any filters (e.g. authentication) defined in
   # AccountsController. Be sure to keep this updated too.
-  let(:valid_session) { {} }
+  # let(:valid_session)  { FactoryGirl.attributes_for(:user) } 
 
   describe "GET index" do
     it "assigns all accounts as @accounts" do
-      account = Account.create! valid_attributes
-      get :index, {}, valid_session
-      assigns(:accounts).should eq([account])
+      get :index
+       expect(assigns(:accounts)).to eq([FactoryGirl.build(:account)])
+
     end
   end
 
@@ -65,18 +69,18 @@ describe AccountsController do
     describe "with valid params" do
       it "creates a new Account" do
         expect {
-          post :create, {:account => valid_attributes}, valid_session
+          post :create, {:account => accountfactory}, valid_session
         }.to change(Account, :count).by(1)
       end
 
       it "assigns a newly created account as @account" do
-        post :create, {:account => valid_attributes}, valid_session
+        post :create, {:account => accountfactory}, valid_session
         assigns(:account).should be_a(Account)
         assigns(:account).should be_persisted
       end
 
       it "redirects to the created account" do
-        post :create, {:account => valid_attributes}, valid_session
+        post :create, {:account => accountfactory}, valid_session
         response.should redirect_to(Account.last)
       end
     end

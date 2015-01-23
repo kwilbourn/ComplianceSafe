@@ -33,6 +33,11 @@ FactoryGirl.define do
     description     "Example Area"
     identifier      "Area Identifier"  
   end
+  factory :account do
+    name            "Example Company"
+    subdomain       "exampleco"
+    
+  end
   trait :has_area do
     before :create do |doc_type|
       FactoryGirl.create :area, :doc_type => doc_type
