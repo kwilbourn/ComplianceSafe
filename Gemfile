@@ -14,6 +14,7 @@ gem 'whenever'
 gem 'enum_help'
 gem 'will_paginate', '~> 3.0.5'
 gem 'proximal_records'
+gem 'chartkick'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.1.4'
 
