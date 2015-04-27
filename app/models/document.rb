@@ -3,6 +3,7 @@ class Document < ActiveRecord::Base
   belongs_to :doc_type
   belongs_to :user
   belongs_to :account
+  belongs_to :document_category
   has_attached_file :document_upload
   
   #validates_with AttachmentPresenceValidator, :attributes => :document_upload
