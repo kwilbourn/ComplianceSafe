@@ -28,8 +28,6 @@ GEM
       thread_safe (~> 0.1)
       tzinfo (~> 1.1)
     arel (5.0.1.20140414130214)
-    aws-sdk (1.55.0)
-      aws-sdk-v1 (= 1.55.0)
     aws-sdk-v1 (1.55.0)
       json (~> 1.4)
       nokogiri (>= 1.4.4)
@@ -225,7 +223,7 @@ PLATFORMS
   x86-mingw32
 
 DEPENDENCIES
-  aws-sdk
+  aws-sdk-v1
   bootstrap-datepicker-rails
   cancancan
   capybara (~> 2.1.0)
