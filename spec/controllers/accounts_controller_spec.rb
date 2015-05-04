@@ -13,9 +13,9 @@ describe AccountsController do
 
   describe "GET index" do
     it "assigns all accounts as @accounts" do
-      get :index
-       expect(assigns(:accounts)).to eq([FactoryGirl.build(:account)])
-
+      accounts = Account.create! valid_attributes
+      get :index, {}, valid_session
+      assigns(:accounts).should eq([account])
     end
   end
 
@@ -66,14 +66,14 @@ describe AccountsController do
       it "assigns a newly created but unsaved account as @account" do
         # Trigger the behavior that occurs when invalid params are submitted
         Account.any_instance.stub(:save).and_return(false)
-        post :create, {:account => { "name" => "invalid value" }}, valid_session
+        post :create, {:account => { "name" => "" }}, valid_session
         assigns(:account).should be_a_new(Account)
       end
 
       it "re-renders the 'new' template" do
         # Trigger the behavior that occurs when invalid params are submitted
         Account.any_instance.stub(:save).and_return(false)
-        post :create, {:account => { "name" => "invalid value" }}, valid_session
+        post :create, {:account => { "name" => "" }}, valid_session
         response.should render_template("new")
       end
     end
