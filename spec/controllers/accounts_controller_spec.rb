@@ -1,7 +1,7 @@
 require 'spec_helper'
 describe AccountsController do
   before do
-    account = FactoryGirl.create(:account)
+    @account = FactoryGirl.create(:account)
     sign_in FactoryGirl.create(:user)
   end
   let(:valid_attributes) { account = FactoryGirl.attributes_for(:account)}
@@ -10,9 +10,9 @@ describe AccountsController do
 
   describe "GET index" do
     it "assigns all accounts as @accounts" do
-      accounts = Account.create! valid_attributes
+      #accounts = Account.create! valid_attributes
       get :index, {}, valid_session
-      assigns(:accounts).should eq([account])
+      assigns(:accounts).should eq([@account])
     end
   end
 
@@ -43,18 +43,18 @@ describe AccountsController do
     describe "with valid params" do
       it "creates a new Account" do
         expect {
-          post :create, {:account => accountfactory}, valid_session
+          post :create, {:account => @account}, valid_session
         }.to change(Account, :count).by(1)
       end
 
       it "assigns a newly created account as @account" do
-        post :create, {:account => accountfactory}, valid_session
+        post :create, {:account => @account}, valid_session
         assigns(:account).should be_a(Account)
         assigns(:account).should be_persisted
       end
 
       it "redirects to the created account" do
-        post :create, {:account => accountfactory}, valid_session
+        post :create, {:account => @account}, valid_session
         response.should redirect_to(Account.last)
       end
     end
