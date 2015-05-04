@@ -18,7 +18,7 @@ Rails.application.routes.draw do
 resources :doc_types
 resources :areas
 resources :documents
-resources :accounts, :only => [:index, :new, :create, :destroy, :show]
+resources :accounts, :only => [:index, :new, :create, :show]
 
  root :to => "documents#index"
 devise_for :client_managers, :controllers => {registrations: 'registrations'}
