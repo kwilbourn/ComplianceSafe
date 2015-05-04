@@ -4,12 +4,9 @@ describe AccountsController do
     account = FactoryGirl.create(:account)
     sign_in FactoryGirl.create(:user)
   end
-  #let(:valid_attributes) { account = FactoryGirl.attributes_for(:account)}
+  let(:valid_attributes) { account = FactoryGirl.attributes_for(:account)}
 
-  # This should return the minimal set of values that should be in the session
-  # in order to pass any filters (e.g. authentication) defined in
-  # AccountsController. Be sure to keep this updated too.
-  # let(:valid_session)  { FactoryGirl.attributes_for(:user) } 
+  let(:valid_session)  { FactoryGirl.attributes_for(:user) } 
 
   describe "GET index" do
     it "assigns all accounts as @accounts" do
