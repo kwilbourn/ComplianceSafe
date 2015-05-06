@@ -60,6 +60,7 @@ group :test do
   gem 'capybara-email'
   gem 'shoulda-matchers', '~> 2.4.0'
   gem 'factory_girl_rails', '~> 4.0', :require => false
+  gem 'database_cleaner'
 end
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem 'tzinfo-data', platforms: [:mingw, :mswin]
