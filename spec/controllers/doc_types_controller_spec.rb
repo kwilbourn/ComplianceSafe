@@ -15,9 +15,8 @@ describe DocTypesController do
 
   describe "GET index" do
     it "assigns all doc_types as @doc_types" do
-      doc_type = FactoryGirl.create(:doc_type)
       get :index, {}, valid_session
-      assigns(:doc_types).should eq([doc_type])
+      assigns(:doc_types).should eq([@doc_type])
     end
   end
 
