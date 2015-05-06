@@ -43,19 +43,19 @@ describe AccountsController do
     describe "with valid params" do
       it "creates a new Account" do
         expect {
-          post :create, {:account => @account}, valid_session
+          post :create, {:account => valid_attributes}, valid_session
         }.to change(Account, :count).by(1)
       end
 
       it "assigns a newly created account as @account" do
-        post :create, {:account => @account}, valid_session
+        post :create, {:account => valid_attributes}, valid_session
         assigns(:account).should be_a(Account)
         assigns(:account).should be_persisted
       end
 
       it "redirects to the created account" do
-        post :create, {:account => @account}, valid_session
-        response.should redirect_to(Account.last)
+        post :create, {:account => valid_attributes}, FactoryGirl.attributes_for(:user)
+        response.should redirect_to(documents_path)
       end
     end
 
