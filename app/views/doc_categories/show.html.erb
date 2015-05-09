@@ -1,0 +1,19 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @doc_category.name %>
+</p>
+
+<p>
+  <strong>Id:</strong>
+  <%= @doc_category.id %>
+</p>
+
+<p>
+  <strong>Account:</strong>
+  <%= @doc_category.account_id %>
+</p>
+
+<%= link_to 'Edit', edit_doc_category_path(@doc_category) %> |
+<%= link_to 'Back', doc_categories_path %>
