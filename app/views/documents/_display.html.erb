@@ -44,8 +44,10 @@
 	<div class="row-fluid">
 	  <div class="span4"><strong>File Attachment:</strong></div>
 	  <div class="span8">
-	  	<div class="span4"><%= link_to  @document.document_upload.url do %>
+	  	<div class="span4"><% if @document.document_upload_file_size %>
+	  		<%= link_to  @document.document_upload.url do %>
   			<%= image_tag('pdf_icon.png') %><br> <%= @document.document_upload_file_size / 1000 %> KB
+  		<% end %>
   		<% end %>
   		</div>
   		<div class="span4">	

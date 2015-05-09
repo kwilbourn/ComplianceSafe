@@ -1,9 +1,10 @@
 source 'https://rubygems.org'
 
 gem 'devise'
-gem 'cancan'
+gem 'devise_invitable', '~> 1.3.4'
+gem 'cancancan'
 gem 'paperclip'
-gem 'aws-sdk'
+gem 'aws-sdk-v1'
 gem 'simple_form'
 gem 'bootstrap-datepicker-rails'
 gem "therubyracer"
@@ -44,8 +45,8 @@ gem 'sdoc', '~> 0.4.0',          group: :doc
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
-  # Use sqlite3 as the database for Active Record
-  gem 'pg'
+ gem 'pg'
+
 
 # Use debugger
 # gem 'debugger', group: [:development, :test]
@@ -59,7 +60,8 @@ group :test do
   gem 'capybara', '~> 2.1.0'
   gem 'capybara-email'
   gem 'shoulda-matchers', '~> 2.4.0'
-  gem 'factory_girl_rails', '~> 4.0'
+  gem 'factory_girl_rails', '~> 4.0', :require => false
+  gem 'database_cleaner'
 end
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem 'tzinfo-data', platforms: [:mingw, :mswin]

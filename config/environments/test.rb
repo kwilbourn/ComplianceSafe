@@ -35,7 +35,7 @@ Rails.application.configure do
   config.active_support.deprecation = :stderr
   # rspec
   RSpec.configure do |config|
-    config.include FactoryGirl::Syntax::Methods
+   # config.include FactoryGirl::Syntax::Methods
   end
   # Raises error for missing translations
   # config.action_view.raise_on_missing_translations = true

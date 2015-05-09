@@ -56,7 +56,7 @@ end
   # POST /documents.json
   def create
  
-    if current_user.site? 
+    if ClientSite
       @document = Document.new(document_params)
       @document.user = current_user
     else

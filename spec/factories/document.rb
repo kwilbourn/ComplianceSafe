@@ -3,15 +3,15 @@ FactoryGirl.define do
   factory :user do
     first_name  "John"
     last_name   "Doe"
-    admin       false
+    type        "ClientSite"
     email       "johnd@example.com"
     password    "changeme"
     password_confirmation "changeme"
   end
-  factory :admin, class: User do
+  factory :admin, class: Admin do
     first_name  "Admin"
     last_name   "User"
-    admin       true
+    type        "Admin"
     email       "administrator@example.com"
     password    "changeme"
     password_confirmation "changeme"
@@ -22,7 +22,7 @@ FactoryGirl.define do
     expiration_date Date.today + 100.days
     user_id         1
     doc_type_id     1
-    document_upload { fixture_file_upload(Rails.root.join('spec', 'factories', 'pdf-sample.pdf'), 'pdf') }
+    #document_upload { fixture_file_upload(Rails.root.join('spec', 'factories', 'pdf-sample.pdf'), 'pdf') }
   end
   factory :doc_type do
     description       "Example Doc Type"
@@ -32,6 +32,11 @@ FactoryGirl.define do
   factory :area do
     description     "Example Area"
     identifier      "Area Identifier"  
+  end
+  factory :account do
+    name            "Example Company"
+    subdomain       "exampleco"
+    
   end
   trait :has_area do
     before :create do |doc_type|

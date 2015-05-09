@@ -1,28 +1,14 @@
 == README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Compliance Safe is a Document Management Product built around the permit retention and alert generation needs of small format retailers.
 
-Things you may want to cover:
+This documentation needs to be improved and revised to include all application prerequisists and further information about build, test, and deployment.
+* Ruby version 2.12p95
 
-* Ruby version
+* Database PostrgreSQL
 
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
+* The app is intended to deploy via Heroku. We will be using Amazon S3 to provide permanent file storage for uploaded documents.
 
 * ...
 
-
-Please feel free to use a different markup language if you do not plan to run
 <tt>rake doc:app</tt>.

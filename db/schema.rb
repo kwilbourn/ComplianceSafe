@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141012164726) do
+ActiveRecord::Schema.define(version: 20150302231759) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -24,12 +24,56 @@ ActiveRecord::Schema.define(version: 20141012164726) do
     t.datetime "updated_at"
   end
 
+  create_table "admins", force: true do |t|
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "areas", force: true do |t|
     t.string   "description"
     t.string   "identifier"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  create_table "client_managers", force: true do |t|
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "client_sites", force: true do |t|
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.string   "invitation_token"
+    t.datetime "invitation_created_at"
+    t.datetime "invitation_sent_at"
+    t.datetime "invitation_accepted_at"
+    t.integer  "invitation_limit"
+    t.integer  "invited_by_id"
+    t.string   "invited_by_type"
+    t.integer  "invitations_count",      default: 0
+  end
+
+  add_index "client_sites", ["invitation_token"], name: "index_client_sites_on_invitation_token", unique: true, using: :btree
+  add_index "client_sites", ["invitations_count"], name: "index_client_sites_on_invitations_count", using: :btree
+  add_index "client_sites", ["invited_by_id"], name: "index_client_sites_on_invited_by_id", using: :btree
+
+  create_table "client_viewers", force: true do |t|
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.string   "invitation_token"
+    t.datetime "invitation_created_at"
+    t.datetime "invitation_sent_at"
+    t.datetime "invitation_accepted_at"
+    t.integer  "invitation_limit"
+    t.integer  "invited_by_id"
+    t.string   "invited_by_type"
+    t.integer  "invitations_count",      default: 0
+  end
+
+  add_index "client_viewers", ["invitation_token"], name: "index_client_viewers_on_invitation_token", unique: true, using: :btree
+  add_index "client_viewers", ["invitations_count"], name: "index_client_viewers_on_invitations_count", using: :btree
+  add_index "client_viewers", ["invited_by_id"], name: "index_client_viewers_on_invited_by_id", using: :btree
 
   create_table "doc_types", force: true do |t|
     t.string   "description"
@@ -41,6 +85,13 @@ ActiveRecord::Schema.define(version: 20141012164726) do
     t.string   "sample_file_content_type"
     t.integer  "sample_file_file_size"
     t.datetime "sample_file_updated_at"
+  end
+
+  create_table "document_categories", force: true do |t|
+    t.string   "name"
+    t.integer  "account_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "document_types", force: true do |t|
@@ -68,6 +119,11 @@ ActiveRecord::Schema.define(version: 20141012164726) do
     t.integer  "replaced_by"
   end
 
+  create_table "managers", force: true do |t|
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "settings", force: true do |t|
     t.string   "var",         null: false
     t.text     "value"
@@ -88,7 +144,7 @@ ActiveRecord::Schema.define(version: 20141012164726) do
 
   create_table "users", force: true do |t|
     t.string   "email",                  default: "", null: false
-    t.string   "encrypted_password",     default: "", null: false
+    t.string   "encrypted_password",     default: ""
     t.string   "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
@@ -107,9 +163,9 @@ ActiveRecord::Schema.define(version: 20141012164726) do
     t.string   "zip"
     t.string   "phone_number"
     t.string   "state"
-    t.integer  "authlevel",              default: 4
     t.integer  "account_id",             default: 0
     t.string   "country"
+    t.string   "type"
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
