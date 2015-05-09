@@ -16,6 +16,14 @@ FactoryGirl.define do
     password    "changeme"
     password_confirmation "changeme"
   end
+    factory :client_manager, class: ClientManager do
+    first_name  "Client"
+    last_name   "Manager"
+    type        "ClientManager"
+    email       "clientmanager@example.com"
+    password    "changeme"
+    password_confirmation "changeme"
+  end
   factory :document do
     name            "Example Document"
     permit_number   "12345 Permit Number"
@@ -36,7 +44,7 @@ FactoryGirl.define do
   factory :account do
     name            "Example Company"
     subdomain       "exampleco"
-    
+    client_manager  FactoryGirl.create(:client_manager)
   end
   trait :has_area do
     before :create do |doc_type|

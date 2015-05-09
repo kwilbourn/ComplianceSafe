@@ -6,4 +6,8 @@ class Account < ActiveRecord::Base
   accepts_nested_attributes_for :client_manager
 
   validates :name, presence: true
+  validate :require_at_least_one_user
+  def require_at_least_one_user
+        errors.add(:user, "At least one user is required.") if self.client_manager.blank? && self.users.blank?
+  end
 end
