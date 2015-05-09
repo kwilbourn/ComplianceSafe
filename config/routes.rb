@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  resources :doc_categories
+
   get 'user_areas/index'
 
   get 'user_areas/update'
