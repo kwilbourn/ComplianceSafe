@@ -19,7 +19,16 @@ describe Account do
   it "is invalid without a name" do
     FactoryGirl.build(:account, name: nil).should_not be_valid
   end
-  it "is invalid without a subdomain" do
-    FactoryGirl.build(:account, subdomain: nil).should_not be_valid
+  it "automatically creates a valid subdomain" do
+    FactoryGirl.build(:account, subdomain: nil).should be_valid
+  end
+  it "is invalid with an blank name" do 
+    FactoryGirl.build(:account, name: " ").should_not be_valid
+  end
+  it "is invalid with a name that is too short" do
+    FactoryGirl.build(:account, name: "ab").should_not be_valid
+  end
+  it "is invalid with a name that is too long" do
+    FactoryGirl.build(:account, name: "abcde fghij klmno pqrst uvwxy zabcd efghi jklmn opqrs").should_not be_valid
   end
 end
