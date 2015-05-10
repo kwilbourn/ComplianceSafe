@@ -10,4 +10,11 @@ describe Area do
   it "is invalid without an area identifier" do
     FactoryGirl.build(:area, identifier: nil).should be_invalid
   end
+  it "should have many doc types" do
+    should have_many(:doc_types)
+  end
+  it "should not accept descriptions that are too short" do
+    FactoryGirl.build(:area, description: "ab").should be_invalid
+  end
+  
 end
