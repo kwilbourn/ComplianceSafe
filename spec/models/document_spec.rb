@@ -4,6 +4,10 @@ describe Document do
   it "has a valid factory" do
     FactoryGirl.create(:document).should be_valid
   end
+  it "returns an integer for days left" do
+    @document = FactoryGirl.create(:document)
+    @document.days_left?.should be_integer
+  end
   it { should belong_to(:doc_type)}
   describe "#recoginizes expired items?" do
     let!(:document) {Document.create(name: "test", permit_number: "1234", expiration_date: "2016-08-18", doc_type_id: 2, user_id: 1)}
