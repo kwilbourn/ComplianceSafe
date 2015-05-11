@@ -24,9 +24,17 @@ resources :accounts, :only => [:index, :new, :create, :show, :edit, :update]
 
  root :to => "documents#index"
 devise_for :client_managers, :controllers => {registrations: 'registrations'}
-
-  devise_for :users
+as :user do
+  get '/login' =>'devise/sessions#new', as: :login
+  get '/logout' => 'devise/sessions#destroy', as: :logout
+end
+  devise_for :users, skip: [:sessions]
   
+  as :user do
+    get "/login" => 'devise/sessions#new', as: :new_user_session
+    post "/login" => 'devise/sessions#create', as: :user_session
+    delete "/logout" => 'devise/sessions#destroy', as: :destroy_user_session
+  end
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

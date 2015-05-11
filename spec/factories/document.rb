@@ -37,6 +37,7 @@ FactoryGirl.define do
     issuing_authority "Example Issuing Authority"
     area_id           1
   end
+
   factory :area do
     description     "Example Area"
     identifier      "Area Identifier"  
@@ -45,6 +46,10 @@ FactoryGirl.define do
     name            "Example Company"
     subdomain       "exampleco"
     client_manager  FactoryGirl.create(:client_manager)
+  end
+  factory :doc_category do
+    name       "Example Doc Type"
+    account_id        FactoryGirl.create(:account)
   end
   trait :has_area do
     before :create do |doc_type|
