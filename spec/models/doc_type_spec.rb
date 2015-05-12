@@ -10,4 +10,7 @@ describe DocType do
     it "is invalid without an issuing authority" do
     FactoryGirl.build(:doc_type, issuing_authority: nil).should be_invalid
   end
+  it "has many documents" do
+    should have_many(:documents)
+  end
 end
