@@ -27,9 +27,5 @@ describe AccountsController do
       put("/accounts/1").should route_to("accounts#update", :id => "1")
     end
 
-    it "routes to #destroy" do
-      delete("/accounts/1").should route_to("accounts#destroy", :id => "1")
-    end
-
   end
 end

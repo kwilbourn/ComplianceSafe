@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150302231759) do
+ActiveRecord::Schema.define(version: 20150511021833) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -80,6 +80,7 @@ ActiveRecord::Schema.define(version: 20150302231759) do
     t.boolean  "alertable"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "account_id", default: 0
   end
 
   create_table "doc_types", force: true do |t|

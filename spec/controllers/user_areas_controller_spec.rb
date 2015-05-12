@@ -1,32 +1,35 @@
 require 'spec_helper'
 
 describe UserAreasController do
-
+ before do
+   sign_in FactoryGirl.create(:user)
+ end
+ let(:valid_session) {FactoryGirl.attributes_for(:user)}
   describe "GET 'index'" do
     it "returns http success" do
-      get 'index'
-      response.should be_success
+      get :index, {}, valid_session
+      should respond_with(:success)
     end
   end
 
   describe "GET 'update'" do
     it "returns http success" do
-      get 'update'
-      response.should be_success
+      get :update, {}, valid_session
+      should respond_with(:success)
     end
   end
 
   describe "GET 'create'" do
     it "returns http success" do
-      get 'create'
-      response.should be_success
+      get :create, {}, valid_session
+      should respond_with(:success)
     end
   end
 
   describe "GET 'edit'" do
     it "returns http success" do
-      get 'edit'
-      response.should be_success
+      get :edit, {}, valid_session
+      should respond_with(:success)
     end
   end
 
