@@ -63,4 +63,4 @@ FactoryGirl.define do
     end
   end
 end
-FactoryGirl.create :document, :has_doc_type
+#FactoryGirl.create :document, :has_doc_type
