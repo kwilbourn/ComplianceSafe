@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150302231759) do
+ActiveRecord::Schema.define(version: 20150511021833) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -75,6 +75,14 @@ ActiveRecord::Schema.define(version: 20150302231759) do
   add_index "client_viewers", ["invitations_count"], name: "index_client_viewers_on_invitations_count", using: :btree
   add_index "client_viewers", ["invited_by_id"], name: "index_client_viewers_on_invited_by_id", using: :btree
 
+  create_table "doc_categories", force: true do |t|
+    t.string   "name"
+    t.boolean  "alertable"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "account_id", default: 0
+  end
+
   create_table "doc_types", force: true do |t|
     t.string   "description"
     t.string   "issuing_authority"
@@ -85,6 +93,7 @@ ActiveRecord::Schema.define(version: 20150302231759) do
     t.string   "sample_file_content_type"
     t.integer  "sample_file_file_size"
     t.datetime "sample_file_updated_at"
+    t.integer  "doc_category_id"
   end
 
   create_table "document_categories", force: true do |t|
