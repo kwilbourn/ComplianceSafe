@@ -145,15 +145,15 @@
   * ================= */
 
   $.fn.alert.noConflict = function () {
-    $.fn.alert = old
-    return this
-  }
+    $.fn.alert = old;
+    return this;
+  };
 
 
  /* ALERT DATA-API
   * ============== */
 
-  $(document).on('click.alert.data-api', dismiss, Alert.prototype.close)
+  $(document).on('click.alert.data-api', dismiss, Alert.prototype.close);
 
 }(window.jQuery);/* ============================================================
  * bootstrap-button.js v2.3.2
@@ -184,80 +184,80 @@
   * ============================== */
 
   var Button = function (element, options) {
-    this.$element = $(element)
-    this.options = $.extend({}, $.fn.button.defaults, options)
-  }
+    this.$element = $(element);
+    this.options = $.extend({}, $.fn.button.defaults, options);
+  };
 
   Button.prototype.setState = function (state) {
     var d = 'disabled'
       , $el = this.$element
       , data = $el.data()
-      , val = $el.is('input') ? 'val' : 'html'
+      , val = $el.is('input') ? 'val' : 'html';
 
-    state = state + 'Text'
-    data.resetText || $el.data('resetText', $el[val]())
+    state = state + 'Text';
+    data.resetText || $el.data('resetText', $el[val]());
 
-    $el[val](data[state] || this.options[state])
+    $el[val](data[state] || this.options[state]);
 
     // push to event loop to allow forms to submit
     setTimeout(function () {
       state == 'loadingText' ?
         $el.addClass(d).attr(d, d) :
-        $el.removeClass(d).removeAttr(d)
-    }, 0)
-  }
+        $el.removeClass(d).removeAttr(d);
+    }, 0);
+  };
 
   Button.prototype.toggle = function () {
-    var $parent = this.$element.closest('[data-toggle="buttons-radio"]')
+    var $parent = this.$element.closest('[data-toggle="buttons-radio"]');
 
     $parent && $parent
       .find('.active')
-      .removeClass('active')
+      .removeClass('active');
 
-    this.$element.toggleClass('active')
-  }
+    this.$element.toggleClass('active');
+  };
 
 
  /* BUTTON PLUGIN DEFINITION
   * ======================== */
 
-  var old = $.fn.button
+  var old = $.fn.button;
 
   $.fn.button = function (option) {
     return this.each(function () {
       var $this = $(this)
         , data = $this.data('button')
-        , options = typeof option == 'object' && option
-      if (!data) $this.data('button', (data = new Button(this, options)))
-      if (option == 'toggle') data.toggle()
-      else if (option) data.setState(option)
+        , options = typeof option == 'object' && option;
+      if (!data) $this.data('button', (data = new Button(this, options)));
+      if (option == 'toggle') data.toggle();
+      else if (option) data.setState(option);
     })
-  }
+  };
 
   $.fn.button.defaults = {
     loadingText: 'loading...'
-  }
+  };
 
-  $.fn.button.Constructor = Button
+  $.fn.button.Constructor = Button;
 
 
  /* BUTTON NO CONFLICT
   * ================== */
 
   $.fn.button.noConflict = function () {
-    $.fn.button = old
-    return this
-  }
+    $.fn.button = old;
+    return this;
+  };
 
 
  /* BUTTON DATA-API
   * =============== */
 
   $(document).on('click.button.data-api', '[data-toggle^=button]', function (e) {
-    var $btn = $(e.target)
-    if (!$btn.hasClass('btn')) $btn = $btn.closest('.btn')
-    $btn.button('toggle')
-  })
+    var $btn = $(e.target);
+    if (!$btn.hasClass('btn')) $btn = $btn.closest('.btn');
+    $btn.button('toggle');
+  });
 
 }(window.jQuery);/* ==========================================================
  * bootstrap-carousel.js v2.3.2
@@ -386,23 +386,23 @@
       if ($.support.transition && this.$element.hasClass('slide')) {
         this.$element.trigger(e)
         if (e.isDefaultPrevented()) return
-        $next.addClass(type)
-        $next[0].offsetWidth // force reflow
-        $active.addClass(direction)
-        $next.addClass(direction)
+        $next.addClass(type);
+        $next[0].offsetWidth; // force reflow
+        $active.addClass(direction);
+        $next.addClass(direction);
         this.$element.one($.support.transition.end, function () {
-          $next.removeClass([type, direction].join(' ')).addClass('active')
-          $active.removeClass(['active', direction].join(' '))
-          that.sliding = false
+          $next.removeClass([type, direction].join(' ')).addClass('active');
+          $active.removeClass(['active', direction].join(' '));
+          that.sliding = false;
           setTimeout(function () { that.$element.trigger('slid') }, 0)
         })
       } else {
         this.$element.trigger(e)
         if (e.isDefaultPrevented()) return
-        $active.removeClass('active')
-        $next.addClass('active')
-        this.sliding = false
-        this.$element.trigger('slid')
+        $active.removeClass('active');
+        $next.addClass('active');
+        this.sliding = false;
+        this.$element.trigger('slid');
       }
 
       isCycling && this.cycle()
