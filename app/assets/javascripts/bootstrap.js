@@ -299,19 +299,19 @@
   Carousel.prototype = {
 
     cycle: function (e) {
-      if (!e) this.paused = false
+      if (!e) this.paused = false;
       if (this.interval) clearInterval(this.interval);
       this.options.interval
         && !this.paused
-        && (this.interval = setInterval($.proxy(this.next, this), this.options.interval))
-      return this
+        && (this.interval = setInterval($.proxy(this.next, this), this.options.interval));
+      return this;
     }
 
   , getActiveIndex: function () {
-      this.$active = this.$element.find('.item.active')
-      this.$items = this.$active.parent().children()
-      return this.$items.index(this.$active)
-    }
+      this.$active = this.$element.find('.item.active');
+      this.$items = this.$active.parent().children();
+      return this.$items.index(this.$active);
+   }
 
   , to: function (pos) {
       var activeIndex = this.getActiveIndex()
@@ -321,36 +321,36 @@
 
       if (this.sliding) {
         return this.$element.one('slid', function () {
-          that.to(pos)
-        })
+          that.to(pos);
+        });
       }
 
       if (activeIndex == pos) {
-        return this.pause().cycle()
+        return this.pause().cycle();
       }
 
-      return this.slide(pos > activeIndex ? 'next' : 'prev', $(this.$items[pos]))
-    }
+      return this.slide(pos > activeIndex ? 'next' : 'prev', $(this.$items[pos]));
+   }
 
   , pause: function (e) {
-      if (!e) this.paused = true
+      if (!e) this.paused = true;
       if (this.$element.find('.next, .prev').length && $.support.transition.end) {
-        this.$element.trigger($.support.transition.end)
-        this.cycle(true)
+        this.$element.trigger($.support.transition.end);
+        this.cycle(true);
       }
-      clearInterval(this.interval)
-      this.interval = null
-      return this
+      clearInterval(this.interval);
+      this.interval = null;
+      return this;
     }
 
   , next: function () {
-      if (this.sliding) return
-      return this.slide('next')
+      if (this.sliding) return;
+      return this.slide('next');
     }
 
   , prev: function () {
-      if (this.sliding) return
-      return this.slide('prev')
+      if (this.sliding) return;
+      return this.slide('prev');
     }
 
   , slide: function (type, next) {
@@ -362,29 +362,29 @@
         , that = this
         , e
 
-      this.sliding = true
+      this.sliding = true;
 
-      isCycling && this.pause()
+      isCycling && this.pause();
 
-      $next = $next.length ? $next : this.$element.find('.item')[fallback]()
+      $next = $next.length ? $next : this.$element.find('.item')[fallback]();
 
       e = $.Event('slide', {
         relatedTarget: $next[0]
       , direction: direction
-      })
+      });
 
-      if ($next.hasClass('active')) return
+      if ($next.hasClass('active')) return;
 
       if (this.$indicators.length) {
-        this.$indicators.find('.active').removeClass('active')
+        this.$indicators.find('.active').removeClass('active');
         this.$element.one('slid', function () {
-          var $nextIndicator = $(that.$indicators.children()[that.getActiveIndex()])
-          $nextIndicator && $nextIndicator.addClass('active')
-        })
+          var $nextIndicator = $(that.$indicators.children()[that.getActiveIndex()]);
+          $nextIndicator && $nextIndicator.addClass('active');
+        });
       }
 
       if ($.support.transition && this.$element.hasClass('slide')) {
-        this.$element.trigger(e)
+        this.$element.trigger(e);
         if (e.isDefaultPrevented()) return
         $next.addClass(type);
         $next[0].offsetWidth; // force reflow
@@ -394,10 +394,10 @@
           $next.removeClass([type, direction].join(' ')).addClass('active');
           $active.removeClass(['active', direction].join(' '));
           that.sliding = false;
-          setTimeout(function () { that.$element.trigger('slid') }, 0)
-        })
+          setTimeout(function () { that.$element.trigger('slid'); }, 0);
+        });
       } else {
-        this.$element.trigger(e)
+        this.$element.trigger(e);
         if (e.isDefaultPrevented()) return
         $active.removeClass('active');
         $next.addClass('active');
@@ -405,18 +405,18 @@
         this.$element.trigger('slid');
       }
 
-      isCycling && this.cycle()
+      isCycling && this.cycle();
 
-      return this
+      return this;
     }
 
-  }
+  };
 
 
  /* CAROUSEL PLUGIN DEFINITION
   * ========================== */
 
-  var old = $.fn.carousel
+  var old = $.fn.carousel;
 
   $.fn.carousel = function (option) {
     return this.each(function () {
