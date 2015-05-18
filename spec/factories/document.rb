@@ -37,6 +37,9 @@ FactoryGirl.define do
     issuing_authority "Example Issuing Authority"
     area_id           1
   end
+factory :permit_expire_alert do
+
+end
 
   factory :area do
     description     "Example Area"
