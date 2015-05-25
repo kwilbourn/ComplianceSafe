@@ -49,7 +49,7 @@ FactoryGirl.define do
   end
   factory :doc_category do
     name       "Example Doc Type"
-    account_id        FactoryGirl.create(:account)
+   # account_id        FactoryGirl.create(:account)
   end
   trait :has_area do
     before :create do |doc_type|
