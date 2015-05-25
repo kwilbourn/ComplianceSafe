@@ -1,4 +1,4 @@
-require 'spec_helper'
+wrequire 'spec_helper'
 
 describe DocType do
   it "has a valid factory" do

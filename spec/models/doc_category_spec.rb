@@ -5,5 +5,9 @@ describe DocCategory do
     FactoryGirl.create(:doc_category).should be_valid 
   end
   
-  #describe "produces a count" do      @example = FactoryGirl.build(:doc_category)      DocCategory.count.should be > 0end
+  it "produces a count" do      
+    @example = FactoryGirl.create(:doc_category)      
+    DocCategory.count.should be > 0
+  end
+  
 end
