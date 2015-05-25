@@ -1,8 +1,9 @@
 require 'spec_helper'
 
 describe DocCategory do
-    describe "produces a count" do
-      FactoryGirl.create(:doc_category)
-      expect(doc_category.count).to be > 0
+  it "has a valid factory" do 
+    FactoryGirl.create(:doc_category).should be_valid 
   end
+  
+  #describe "produces a count" do      @example = FactoryGirl.build(:doc_category)      DocCategory.count.should be > 0end
 end

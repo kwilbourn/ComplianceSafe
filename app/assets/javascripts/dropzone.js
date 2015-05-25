@@ -1,5 +1,5 @@
 
-;(function(){
+(function(){
 
 /**
  * Require the module at `name`.
@@ -1871,4 +1871,4 @@ if (typeof exports == "object") {
 } else {
   this["Dropzone"] = require("dropzone");
 }
-})()
+})();

@@ -6,8 +6,8 @@
     
 <%= f.input :first_name %>
 <%= f.input :last_name %>
-<%= f.fields_for :account do |builder| %>
-    <%= builder.input :name, label: 'Your Company Name' %>
+	<%= f.fields_for :account do |builder| %>
+	    <%= builder.input :name, label: 'Your Company Name' %>
 	<%end%>
     <%= f.input :email, autofocus: true %>
 
