@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150512232721) do
+ActiveRecord::Schema.define(version: 20150622020354) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -58,30 +58,6 @@ ActiveRecord::Schema.define(version: 20150512232721) do
   add_index "client_sites", ["invitations_count"], name: "index_client_sites_on_invitations_count", using: :btree
   add_index "client_sites", ["invited_by_id"], name: "index_client_sites_on_invited_by_id", using: :btree
 
-  create_table "client_viewers", force: true do |t|
-    t.datetime "created_at"
-    t.datetime "updated_at"
-    t.string   "invitation_token"
-    t.datetime "invitation_created_at"
-    t.datetime "invitation_sent_at"
-    t.datetime "invitation_accepted_at"
-    t.integer  "invitation_limit"
-    t.integer  "invited_by_id"
-    t.string   "invited_by_type"
-    t.integer  "invitations_count",      default: 0
-  end
-
-  add_index "client_viewers", ["invitation_token"], name: "index_client_viewers_on_invitation_token", unique: true, using: :btree
-  add_index "client_viewers", ["invitations_count"], name: "index_client_viewers_on_invitations_count", using: :btree
-  add_index "client_viewers", ["invited_by_id"], name: "index_client_viewers_on_invited_by_id", using: :btree
-
-  create_table "doc_categories", force: true do |t|
-    t.string   "name"
-    t.boolean  "alertable"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
   create_table "doc_types", force: true do |t|
     t.string   "description"
     t.string   "issuing_authority"
@@ -92,7 +68,6 @@ ActiveRecord::Schema.define(version: 20150512232721) do
     t.string   "sample_file_content_type"
     t.integer  "sample_file_file_size"
     t.datetime "sample_file_updated_at"
-    t.integer  "doc_category_id"
   end
 
   create_table "document_categories", force: true do |t|
@@ -100,14 +75,6 @@ ActiveRecord::Schema.define(version: 20150512232721) do
     t.integer  "account_id"
     t.datetime "created_at"
     t.datetime "updated_at"
-  end
-
-  create_table "document_types", force: true do |t|
-    t.string   "description"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-    t.string   "issuing_authority"
-    t.integer  "area_id"
   end
 
   create_table "documents", force: true do |t|
@@ -125,11 +92,6 @@ ActiveRecord::Schema.define(version: 20150512232721) do
     t.integer  "doc_type_id"
     t.integer  "verify",                       default: 0
     t.integer  "replaced_by"
-  end
-
-  create_table "managers", force: true do |t|
-    t.datetime "created_at"
-    t.datetime "updated_at"
   end
 
   create_table "settings", force: true do |t|
