@@ -23,7 +23,7 @@ resources :documents
 resources :accounts, :only => [:index, :new, :create, :show, :edit, :update]
 
  root :to => "documents#index"
-devise_for :client_managers, :controllers => {registrations: 'registrations'}
+devise_for :clients, :controllers => {registrations: 'registrations'}
 as :user do
   get '/login' =>'devise/sessions#new', as: :login
   get '/logout' => 'devise/sessions#destroy', as: :logout

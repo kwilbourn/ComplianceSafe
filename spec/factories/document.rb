@@ -16,10 +16,10 @@ FactoryGirl.define do
     password    "changeme"
     password_confirmation "changeme"
   end
-    factory :client_manager, class: ClientManager do
+    factory :client, class: Client do
     first_name  "Client"
     last_name   "Manager"
-    type        "ClientManager"
+    type        "Client"
     email       "clientmanager@example.com"
     password    "changeme"
     password_confirmation "changeme"
@@ -48,7 +48,7 @@ end
   factory :account do
     name            "Example Company"
     subdomain       "exampleco"
-    client_manager  FactoryGirl.create(:client_manager)
+    client_manager  FactoryGirl.create(:client)
   end
   factory :doc_category do
     name       "Example Doc Type"
