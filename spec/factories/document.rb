@@ -49,6 +49,10 @@ FactoryGirl.define do
   factory :document_category do
     name       "Example Doc Type"  
   end
+  factory :user_areas do
+    client          FactoryGirl.build(:client, email: "testuserareas@example.com")
+    area            FactoryGirl.build(:area, description: "Example User Area")
+  end
   factory :permit_expire_alert do
 
   end
