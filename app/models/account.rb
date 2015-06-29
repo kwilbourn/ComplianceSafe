@@ -2,7 +2,7 @@ class Account < ActiveRecord::Base
   has_many :clients, :dependent => :destroy
   has_many :documents, through: :users, :dependent => :destroy
   has_many :document_categories, :dependent => :destroy
-
+  has_one :owner, -> { where role: 'manager' }, class_name: "Client"
   validates :name, presence: true, length: { in: 3..30 }
   validate :create_subdomain
   validate :require_at_least_one_user

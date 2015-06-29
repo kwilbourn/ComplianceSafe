@@ -37,10 +37,6 @@ FactoryGirl.define do
     issuing_authority "Example Issuing Authority"
     area_id           1
   end
-factory :permit_expire_alert do
-
-end
-
   factory :area do
     description     "Example Area"
     identifier      "Area Identifier"  
@@ -48,12 +44,16 @@ end
   factory :account do
     name            "Example Company"
     subdomain       "exampleco"
-    client_manager  FactoryGirl.create(:client)
+    owner          FactoryGirl.create(:client)
   end
-  factory :doc_category do
-    name       "Example Doc Type"
-   # account_id        FactoryGirl.create(:account)
+  factory :document_category do
+    name       "Example Doc Type"  
   end
+  factory :permit_expire_alert do
+
+  end
+
+  
   trait :has_area do
     before :create do |doc_type|
       FactoryGirl.create :area, :doc_type => doc_type
