@@ -8,7 +8,7 @@ class Account < ActiveRecord::Base
   validate :require_at_least_one_user
   validates :subdomain, presence: true
   def require_at_least_one_user
-        errors.add(:user, "At least one user is required.") if self.client_manager.blank? && self.users.blank?
+        errors.add(:user, "At least one user is required.") if self.owner.blank? && self.clients.blank?
   end
   def create_subdomain
     if self.subdomain.blank?
