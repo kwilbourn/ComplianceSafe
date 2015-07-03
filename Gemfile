@@ -11,6 +11,7 @@ gem "therubyracer"
 gem "less-rails"
 gem 'twitter-bootstrap-rails'
 gem 'ledermann-rails-settings'
+gem 'role_model', '~> 0.8.2'
 gem 'whenever'
 gem 'enum_help'
 gem 'will_paginate', '~> 3.0.5'

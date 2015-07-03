@@ -145,6 +145,7 @@ GEM
     rdoc (4.1.1)
       json (~> 1.4)
     ref (1.0.5)
+    role_model (0.8.2)
     rspec-collection_matchers (1.0.0)
       rspec-expectations (>= 2.99.0.beta1)
     rspec-core (2.99.1)
@@ -245,6 +246,7 @@ DEPENDENCIES
   proximal_records
   rails (= 4.1.4)
   rails_12factor
+  role_model (~> 0.8.2)
   rspec-rails (~> 2.0)
   sass-rails (~> 4.0.3)
   sdoc (~> 0.4.0)
