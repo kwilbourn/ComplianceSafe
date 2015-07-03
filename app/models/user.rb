@@ -10,4 +10,7 @@ class User < ActiveRecord::Base
   def name
     first_name + " " + last_name
   end
+  def build_account
+    
+  end
 end

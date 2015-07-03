@@ -12,17 +12,8 @@ class Ability
       can :read, Area
       #area above needs to be modified to show only areas associated with that user.
     end
-    if ClientManager
+    if Client
       #need method to get all users for account and show all areas belonging to those users
-    end
-    if ClientViewer
-      can :update, Document
-    end
-    if Manager
-      can :read, DocType
-      can :update, DocType
-      can :create, Area
-      can :update, Area
     end
     # Define abilities for the passed in user here. For example:
     #
