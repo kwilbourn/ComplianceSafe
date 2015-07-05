@@ -13,6 +13,20 @@ class Ability
       #area above needs to be modified to show only areas associated with that user.
     end
     if Client
+       if user.has_role? :owner
+         can :read, Account
+         #can :validate, GroupClients
+       elsif user.has_role? :manager
+         #TODO: Add user defined, account scoped, user groups.
+         #can :read, Group
+         #can :create, Group
+         #can :create, GroupClients 
+       elsif user.has_role? :site
+         can :create, Document, :user_id => user.id
+         can :read, DocType
+         can :read, Area
+         can :read, DocCategory
+       end
       #need method to get all users for account and show all areas belonging to those users
     end
     # Define abilities for the passed in user here. For example:
