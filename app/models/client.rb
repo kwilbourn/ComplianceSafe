@@ -16,4 +16,13 @@ class Client < User
     #site is the basic user level and should be granted upload permissions
     # TODO: In ability.rb, define the site as able to generate document uploads and view documents within their personal scope.
     #viewer is a special, non-billed user created by a manager or owner with permissions to view a specific document or document category. This needs to be explored in full.
+    def roles=(roles)
+       self.roles_mask = (roles & ROLES).map { |r| 2**ROLES.index(r) }.inject(0, :+)
+    end
+
+    def roles
+      ROLES.reject do |r|
+        ((roles_mask.to_i || 0) & 2**ROLES.index(r)).zero?
+      end
+    end
 end
