@@ -1,6 +1,8 @@
 class Client < User
     belongs_to :account
     accepts_nested_attributes_for :account
+    has_many :user_groups
+    has_many :groups, through: :user_groups
     include DeviseInvitable::Inviter
     include RoleModel
     roles_attribute :roles_mask
