@@ -53,6 +53,9 @@ FactoryGirl.define do
     client          FactoryGirl.build(:client, email: "testuserareas@example.com")
     area            FactoryGirl.build(:area, description: "Example User Area")
   end
+  factory :group do
+    name       "Example User Group"
+  end
   factory :permit_expire_alert do
 
   end
