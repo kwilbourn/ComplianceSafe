@@ -1,28 +1,29 @@
 class Ability
   include CanCan::Ability
-
-  def initialize(user)
-    #Users can read, update, and create their own documents.
-    if Admin
+def initialize(admin)
+      if Admin
       can :manage, :all
-    else
-      can :read, Document, :user_id => user.id
-      can :create, Document, :user_id => user.id
+end
+  def initialize(client)
+    #Users can read, update, and create their own documents.
+
+      can :read, Document, :user_id => client.id
+      can :create, Document, :user_id => client.id
       can :read, DocType
       can :read, Area
       #area above needs to be modified to show only areas associated with that user.
-    end
+
     if Client
-       if user.has_role? :owner
+       if Client.roles? :owner
          can :read, Account
          #can :validate, GroupClients
-       elsif user.has_role? :manager
+       elsif Client.has_role? :manager
          #TODO: Add user defined, account scoped, user groups.
          #can :read, Group
          #can :create, Group
          #can :create, GroupClients 
        elsif user.has_role? :site
-         can :create, Document, :user_id => user.id
+         can :create, Document, :user_id => client.id
          can :read, DocType
          can :read, Area
          can :read, DocCategory
@@ -51,4 +52,5 @@ class Ability
     # See the wiki for details:
     # https://github.com/ryanb/cancan/wiki/Defining-Abilities
   end
+end
 end

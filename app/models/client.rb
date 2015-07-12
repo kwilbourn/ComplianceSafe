@@ -4,12 +4,10 @@ class Client < User
     has_many :user_groups
     has_many :groups, through: :user_groups
     include DeviseInvitable::Inviter
-    include RoleModel
-    roles_attribute :roles_mask
-
+    easy_roles :roles_mask, method: :bitmask
     # declare the valid roles -- do not change the order if you add more
     # roles later, always append them at the end!
-    roles :owner, :manager, :site, :viewer
+    ROLES_MASK = %w[owner manager site viewer]
     #owner is first user created for a new account.
     # TODO: add to ability.rb for owner to use invitations and view users within account
     #manager has universal permissions throughout the group assigned (groups must be defined)
@@ -18,15 +16,6 @@ class Client < User
     #site is the basic user level and should be granted upload permissions
     # TODO: In ability.rb, define the site as able to generate document uploads and view documents within their personal scope.
     #viewer is a special, non-billed user created by a manager or owner with permissions to view a specific document or document category. This needs to be explored in full.
+    # TODO: create exception for roles not in mask
     
-    #sets up and finds roles by a bitwise role mask
-    def roles=(roles)
-       self.roles_mask = (roles & ROLES).map { |r| 2**ROLES.index(r) }.inject(0, :+)
-    end
-
-    def roles
-      ROLES.reject do |r|
-        ((roles_mask.to_i || 0) & 2**ROLES.index(r)).zero?
-      end
-    end
 end
