@@ -57,7 +57,7 @@ FactoryGirl.define do
     name       "Example User Group"
   end
   factory :user_group do
-    user            FactoryGirl.build(:client, email: "testusergroup@example.com")
+    client          FactoryGirl.build(:client, email: "testusergroup@example.com")
     group           FactoryGirl.build(:group, name: "Test User Group")
   end
   factory :permit_expire_alert do
