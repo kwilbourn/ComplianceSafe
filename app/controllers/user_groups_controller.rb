@@ -71,5 +71,3 @@ class UserGroupsController < ApplicationController
 
 end
 
-
-end
