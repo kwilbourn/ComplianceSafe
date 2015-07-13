@@ -20,9 +20,9 @@ end
          #can :validate, GroupClients
        elsif Client.has_role? "manager"
          #TODO: Add user defined, account scoped, user groups.
-         #can :read, Group
-         #can :create, Group
-         #can :create, GroupClients 
+         can :read, Group
+         can :create, Group
+         can :create, UserGroups 
          can :create, Document, :user_id => client.id
        elsif user.has_role? "site"
          can :create, Document, :user_id => client.id
