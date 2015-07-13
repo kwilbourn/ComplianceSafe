@@ -56,7 +56,7 @@ end
   # POST /documents.json
   def create
  
-    if ClientSite
+    if Client.has_role? :site
       @document = Document.new(document_params)
       @document.user = current_user
     else

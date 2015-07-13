@@ -14,15 +14,17 @@ end
       #area above needs to be modified to show only areas associated with that user.
 
     if Client
-       if Client.roles? :owner
+       if Client.has_role? "owner"
          can :read, Account
+         can :create, Document
          #can :validate, GroupClients
-       elsif Client.has_role? :manager
+       elsif Client.has_role? "manager"
          #TODO: Add user defined, account scoped, user groups.
          #can :read, Group
          #can :create, Group
          #can :create, GroupClients 
-       elsif user.has_role? :site
+         can :create, Document, :user_id => client.id
+       elsif user.has_role? "site"
          can :create, Document, :user_id => client.id
          can :read, DocType
          can :read, Area
