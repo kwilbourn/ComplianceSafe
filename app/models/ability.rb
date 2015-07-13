@@ -17,6 +17,9 @@ end
        if Client.has_role? "owner"
          can :read, Account
          can :create, Document
+         can :read, Group
+         can :create, Group
+         can :create, UserGroups
          #can :validate, GroupClients
        elsif Client.has_role? "manager"
          #TODO: Add user defined, account scoped, user groups.
